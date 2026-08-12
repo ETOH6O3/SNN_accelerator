@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="aer_loop_tb_time_impl.wdb" id="1">
+         <top_modules>
+            <top_module name="aer_loop_tb" />
+            <top_module name="glbl" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="872.584 ns"></ZoomStartTime>
+      <ZoomEndTime time="1,325.085 ns"></ZoomEndTime>
+      <Cursor1Time time="964.120 ns"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="253"></NameColumnWidth>
+      <ValueColumnWidth column_width="90"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="22" />
+   <wvobject fp_name="/aer_loop_tb/rst_n" type="logic">
+      <obj_property name="ElementShortName">rst_n</obj_property>
+      <obj_property name="ObjectShortName">rst_n</obj_property>
+   </wvobject>
+   <wvobject fp_name="group13" type="group">
+      <obj_property name="label">tx</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/aer_loop_tb/clk1" type="logic">
+         <obj_property name="ElementShortName">clk1</obj_property>
+         <obj_property name="ObjectShortName">clk1</obj_property>
+      </wvobject>
+      <wvobject fp_name="/aer_loop_tb/dbg_s_axis_tvalid" type="logic">
+         <obj_property name="ElementShortName">dbg_s_axis_tvalid</obj_property>
+         <obj_property name="ObjectShortName">dbg_s_axis_tvalid</obj_property>
+      </wvobject>
+      <wvobject fp_name="/aer_loop_tb/dbg_s_axis_tdata" type="array">
+         <obj_property name="ElementShortName">dbg_s_axis_tdata[9:0]</obj_property>
+         <obj_property name="ObjectShortName">dbg_s_axis_tdata[9:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/aer_loop_tb/dbg_aer_addr" type="array">
+         <obj_property name="ElementShortName">dbg_aer_addr[9:0]</obj_property>
+         <obj_property name="ObjectShortName">dbg_aer_addr[9:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/aer_loop_tb/dbg_aer_req" type="logic">
+         <obj_property name="ElementShortName">dbg_aer_req</obj_property>
+         <obj_property name="ObjectShortName">dbg_aer_req</obj_property>
+      </wvobject>
+      <wvobject fp_name="/aer_loop_tb/dbg_s_axis_tready" type="logic">
+         <obj_property name="ElementShortName">dbg_s_axis_tready</obj_property>
+         <obj_property name="ObjectShortName">dbg_s_axis_tready</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group14" type="group">
+      <obj_property name="label">rx</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/aer_loop_tb/dbg_aer_ack" type="logic">
+         <obj_property name="ElementShortName">dbg_aer_ack</obj_property>
+         <obj_property name="ObjectShortName">dbg_aer_ack</obj_property>
+      </wvobject>
+      <wvobject fp_name="/aer_loop_tb/dbg_m_axis_tvalid" type="logic">
+         <obj_property name="ElementShortName">dbg_m_axis_tvalid</obj_property>
+         <obj_property name="ObjectShortName">dbg_m_axis_tvalid</obj_property>
+      </wvobject>
+      <wvobject fp_name="/aer_loop_tb/dbg_m_axis_tdata" type="array">
+         <obj_property name="ElementShortName">dbg_m_axis_tdata[9:0]</obj_property>
+         <obj_property name="ObjectShortName">dbg_m_axis_tdata[9:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/aer_loop_tb/dbg_m_axis_tready" type="logic">
+         <obj_property name="ElementShortName">dbg_m_axis_tready</obj_property>
+         <obj_property name="ObjectShortName">dbg_m_axis_tready</obj_property>
+      </wvobject>
+      <wvobject fp_name="/aer_loop_tb/clk2" type="logic">
+         <obj_property name="ElementShortName">clk2</obj_property>
+         <obj_property name="ObjectShortName">clk2</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="/aer_loop_tb/hp1" type="array">
+      <obj_property name="ElementShortName">hp1[7:0]</obj_property>
+      <obj_property name="ObjectShortName">hp1[7:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/aer_loop_tb/hp2" type="array">
+      <obj_property name="ElementShortName">hp2[7:0]</obj_property>
+      <obj_property name="ObjectShortName">hp2[7:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/aer_loop_tb/inj_vld" type="logic">
+      <obj_property name="ElementShortName">inj_vld</obj_property>
+      <obj_property name="ObjectShortName">inj_vld</obj_property>
+   </wvobject>
+   <wvobject fp_name="/aer_loop_tb/inj_data" type="array">
+      <obj_property name="ElementShortName">inj_data[9:0]</obj_property>
+      <obj_property name="ObjectShortName">inj_data[9:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/aer_loop_tb/inj_ready" type="logic">
+      <obj_property name="ElementShortName">inj_ready</obj_property>
+      <obj_property name="ObjectShortName">inj_ready</obj_property>
+   </wvobject>
+   <wvobject fp_name="/aer_loop_tb/injection_en" type="logic">
+      <obj_property name="ElementShortName">injection_en</obj_property>
+      <obj_property name="ObjectShortName">injection_en</obj_property>
+   </wvobject>
+   <wvobject fp_name="/aer_loop_tb/dbg_init_over" type="logic">
+      <obj_property name="ElementShortName">dbg_init_over</obj_property>
+      <obj_property name="ObjectShortName">dbg_init_over</obj_property>
+   </wvobject>
+   <wvobject fp_name="/aer_loop_tb/__aer_test_inst/your_instance_name/s_axis_tvalid" type="logic">
+      <obj_property name="ElementShortName">s_axis_tvalid</obj_property>
+      <obj_property name="ObjectShortName">s_axis_tvalid</obj_property>
+   </wvobject>
+   <wvobject fp_name="/aer_loop_tb/__aer_test_inst/m_axis_tdata_1" type="array">
+      <obj_property name="ElementShortName">m_axis_tdata_1[9:0]</obj_property>
+      <obj_property name="ObjectShortName">m_axis_tdata_1[9:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/aer_loop_tb/__aer_test_inst/your_instance_name/m_axis_tdata" type="array">
+      <obj_property name="ElementShortName">m_axis_tdata[15:0]</obj_property>
+      <obj_property name="ObjectShortName">m_axis_tdata[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/aer_loop_tb/__aer_test_inst/aer_tx_inst/Q" type="array">
+      <obj_property name="ElementShortName">Q[9:0]</obj_property>
+      <obj_property name="ObjectShortName">Q[9:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/aer_loop_tb/__aer_test_inst/m_axis_tvalid_2" type="logic">
+      <obj_property name="ElementShortName">m_axis_tvalid_2</obj_property>
+      <obj_property name="ObjectShortName">m_axis_tvalid_2</obj_property>
+   </wvobject>
+   <wvobject fp_name="/aer_loop_tb/__aer_test_inst/m_axis_tdata_1" type="array">
+      <obj_property name="ElementShortName">m_axis_tdata_1[9:0]</obj_property>
+      <obj_property name="ObjectShortName">m_axis_tdata_1[9:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/aer_loop_tb/__aer_test_inst/m_axis_tvalid_11_out" type="logic">
+      <obj_property name="ElementShortName">m_axis_tvalid_11_out</obj_property>
+      <obj_property name="ObjectShortName">m_axis_tvalid_11_out</obj_property>
+   </wvobject>
+   <wvobject fp_name="/aer_loop_tb/__aer_test_inst/aer_rx_inst/m_axis_tdata" type="array">
+      <obj_property name="ElementShortName">m_axis_tdata[9:0]</obj_property>
+      <obj_property name="ObjectShortName">m_axis_tdata[9:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/aer_loop_tb/__aer_test_inst/aer_rx_inst/m_axis_tready" type="logic">
+      <obj_property name="ElementShortName">m_axis_tready</obj_property>
+      <obj_property name="ObjectShortName">m_axis_tready</obj_property>
+   </wvobject>
+   <wvobject fp_name="/aer_loop_tb/__aer_test_inst/aer_rx_inst/m_axis_tvalid" type="logic">
+      <obj_property name="ElementShortName">m_axis_tvalid</obj_property>
+      <obj_property name="ObjectShortName">m_axis_tvalid</obj_property>
+   </wvobject>
+   <wvobject fp_name="/aer_loop_tb/__aer_test_inst/aer_rx_inst/begin_next_trans" type="logic">
+      <obj_property name="ElementShortName">begin_next_trans</obj_property>
+      <obj_property name="ObjectShortName">begin_next_trans</obj_property>
+   </wvobject>
+   <wvobject fp_name="/aer_loop_tb/__aer_test_inst/aer_rx_inst/mtvld_next" type="logic">
+      <obj_property name="ElementShortName">mtvld_next</obj_property>
+      <obj_property name="ObjectShortName">mtvld_next</obj_property>
+   </wvobject>
+</wave_config>

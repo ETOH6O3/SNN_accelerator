@@ -1,0 +1,6 @@
+{signal: [
+  {name: 'addr', wave: 'x.3..x..',data:['spike_packet']},
+  {name:'req', wave:'0.1..0..', node:'..1..3'},
+  {name:'ack',wave:'0..1..0.',node:'...2..4'},
+],
+  edge:['1~->2','2~->3','3~->4']}

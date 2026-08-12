@@ -1,0 +1,18 @@
+{reg: [
+        {
+            "name": "v_mem",
+            "bits": 16,
+            "type": 5
+        },
+        {
+            "name": "t_ref",
+            "bits": 4,
+            "type": 4
+        },
+        {
+            "name": "calcium",
+            "bits": 4,
+            "type": 3
+        },
+    ]
+}

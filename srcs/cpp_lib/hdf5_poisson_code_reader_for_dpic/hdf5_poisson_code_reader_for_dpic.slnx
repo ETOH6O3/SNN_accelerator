@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="hdf5_poisson_code_reader_for_dpic/hdf5_poisson_code_reader_for_dpic.vcxproj" Id="8b4b5a23-9282-41c0-9f03-804967d5fc0a" />
+</Solution>

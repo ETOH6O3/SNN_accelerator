@@ -1,0 +1,13 @@
+{reg: [
+        {
+            "name": "weight",
+            "bits": 8,
+            "type": 5
+        },{
+            "name": "learn_var",
+            "bits": 4,
+            "type": 3
+        },
+        
+    ]
+}

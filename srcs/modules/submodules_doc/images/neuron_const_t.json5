@@ -1,0 +1,13 @@
+{reg: [
+        {
+            "name": "v_thr",
+            "bits": 16,
+            "type": 5
+        },
+        {
+            "name": "t_ref",
+            "bits": 4,
+            "type": 4
+        },
+    ]
+}

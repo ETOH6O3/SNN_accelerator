@@ -1,0 +1,6 @@
+{reg:
+ [
+   {bits: 8, name: 'target neuron addr', type:3, attr:[0x0, '~', 'trg_number']},
+   {bits: 8, name: 'source neuron addr', type:5, attr:[0x0, '~', 'src_number']},
+ ]
+}

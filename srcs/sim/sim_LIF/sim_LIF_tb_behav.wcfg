@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="sim_LIF_tb_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="consts_pkg" />
+            <top_module name="data_types_pkg" />
+            <top_module name="glbl" />
+            <top_module name="sim_LIF_tb" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="23,532.974719 us"></ZoomStartTime>
+      <ZoomEndTime time="23,549.874720 us"></ZoomEndTime>
+      <Cursor1Time time="23,547.058053 us"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="248"></NameColumnWidth>
+      <ValueColumnWidth column_width="155"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="12" />
+   <wvobject fp_name="/sim_LIF_tb/clk" type="logic">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="group70" type="group">
+      <obj_property name="label">New Group 1</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/sim_LIF_tb/SNN_Accelerater_inst/ctrl_step" type="array">
+         <obj_property name="ElementShortName">ctrl_step[1:0]</obj_property>
+         <obj_property name="ObjectShortName">ctrl_step[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/sim_LIF_tb/SNN_Accelerater_inst/neuron_data_i_confilct_free.v_mem" type="array">
+         <obj_property name="ElementShortName">.v_mem[15:0]</obj_property>
+         <obj_property name="ObjectShortName">.v_mem[15:0]</obj_property>
+         <obj_property name="CellHeight">100</obj_property>
+         <obj_property name="AnalogYRangeType">ANALOG_YRANGETYPE_AUTO</obj_property>
+         <obj_property name="AnalogYRangeMin">0.000000</obj_property>
+         <obj_property name="AnalogYRRangeMax">300.000000</obj_property>
+         <obj_property name="AnalogInterpolation">ANALOG_INTERPOLATION_HOLD</obj_property>
+         <obj_property name="AnalogOffscale">ANALOG_OFFSCALE_OVERLAP</obj_property>
+         <obj_property name="AnalogHorizLine">0.000000</obj_property>
+         <obj_property name="WaveformStyle">STYLE_ANALOG</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/sim_LIF_tb/SNN_Accelerater_inst/spike" type="logic">
+         <obj_property name="ElementShortName">spike</obj_property>
+         <obj_property name="ObjectShortName">spike</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group71" type="group">
+      <obj_property name="label">New Group 2</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/sim_LIF_tb/SNN_Accelerater_inst/enable_learn" type="logic">
+         <obj_property name="ElementShortName">enable_learn</obj_property>
+         <obj_property name="ObjectShortName">enable_learn</obj_property>
+      </wvobject>
+      <wvobject fp_name="/sim_LIF_tb/SNN_Accelerater_inst/learn_mode" type="other">
+         <obj_property name="ElementShortName">learn_mode</obj_property>
+         <obj_property name="ObjectShortName">learn_mode</obj_property>
+      </wvobject>
+      <wvobject fp_name="/sim_LIF_tb/SNN_Accelerater_inst/ctrl_step" type="array">
+         <obj_property name="ElementShortName">ctrl_step[1:0]</obj_property>
+         <obj_property name="ObjectShortName">ctrl_step[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/sim_LIF_tb/SNN_Accelerater_inst/neuron_data_i_confilct_free.v_mem" type="array">
+         <obj_property name="ElementShortName">.v_mem[15:0]</obj_property>
+         <obj_property name="ObjectShortName">.v_mem[15:0]</obj_property>
+         <obj_property name="AnalogYRangeType">ANALOG_YRANGETYPE_FIXED</obj_property>
+         <obj_property name="AnalogYRangeMin">0.000000</obj_property>
+         <obj_property name="AnalogYRRangeMax">500.000000</obj_property>
+         <obj_property name="AnalogInterpolation">ANALOG_INTERPOLATION_HOLD</obj_property>
+         <obj_property name="AnalogOffscale">ANALOG_OFFSCALE_OVERLAP</obj_property>
+         <obj_property name="AnalogHorizLine">0.000000</obj_property>
+         <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/sim_LIF_tb/SNN_Accelerater_inst/synapse_data_i_confilct_free.weight" type="array">
+         <obj_property name="ElementShortName">.weight[7:0]</obj_property>
+         <obj_property name="ObjectShortName">.weight[7:0]</obj_property>
+         <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/sim_LIF_tb/SNN_Accelerater_inst/spike" type="logic">
+         <obj_property name="ElementShortName">spike</obj_property>
+         <obj_property name="ObjectShortName">spike</obj_property>
+      </wvobject>
+      <wvobject fp_name="/sim_LIF_tb/SNN_Accelerater_inst/neuron_data_i_confilct_free.t_ref" type="array">
+         <obj_property name="ElementShortName">.t_ref[3:0]</obj_property>
+         <obj_property name="ObjectShortName">.t_ref[3:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/sim_LIF_tb/SNN_Accelerater_inst/neuron_data_i_confilct_free.calcium" type="array">
+         <obj_property name="ElementShortName">.calcium[3:0]</obj_property>
+         <obj_property name="ObjectShortName">.calcium[3:0]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="/sim_LIF_tb/SNN_Accelerater_inst/in_fifo_pop" type="logic">
+      <obj_property name="ElementShortName">in_fifo_pop</obj_property>
+      <obj_property name="ObjectShortName">in_fifo_pop</obj_property>
+   </wvobject>
+   <wvobject fp_name="/sim_LIF_tb/SNN_Accelerater_inst/aer_r/req" type="logic">
+      <obj_property name="ElementShortName">req</obj_property>
+      <obj_property name="ObjectShortName">req</obj_property>
+   </wvobject>
+   <wvobject fp_name="/sim_LIF_tb/SNN_Accelerater_inst/aer_r/ack" type="logic">
+      <obj_property name="ElementShortName">ack</obj_property>
+      <obj_property name="ObjectShortName">ack</obj_property>
+   </wvobject>
+   <wvobject fp_name="/sim_LIF_tb/SNN_Accelerater_inst/AERInput_inst/AER_rx/addr" type="array">
+      <obj_property name="ElementShortName">addr[9:0]</obj_property>
+      <obj_property name="ObjectShortName">addr[9:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/sim_LIF_tb/SNN_Accelerater_inst/AERInput_inst/aer_rx_inst/m_axis_tready" type="logic">
+      <obj_property name="ElementShortName">m_axis_tready</obj_property>
+      <obj_property name="ObjectShortName">m_axis_tready</obj_property>
+   </wvobject>
+   <wvobject fp_name="/sim_LIF_tb/SNN_Accelerater_inst/AERInput_inst/aer_rx_inst/m_axis_tvalid" type="logic">
+      <obj_property name="ElementShortName">m_axis_tvalid</obj_property>
+      <obj_property name="ObjectShortName">m_axis_tvalid</obj_property>
+   </wvobject>
+   <wvobject fp_name="/sim_LIF_tb/SNN_Accelerater_inst/AERInput_inst/aer_rx_inst/m_axis_tdata" type="array">
+      <obj_property name="ElementShortName">m_axis_tdata[9:0]</obj_property>
+      <obj_property name="ObjectShortName">m_axis_tdata[9:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/sim_LIF_tb/SNN_Accelerater_inst/AERInput_inst/aer_rx_inst/req_sync" type="logic">
+      <obj_property name="ElementShortName">req_sync</obj_property>
+      <obj_property name="ObjectShortName">req_sync</obj_property>
+   </wvobject>
+   <wvobject fp_name="/sim_LIF_tb/SNN_Accelerater_inst/AERInput_inst/aer_rx_inst/begin_next_trans" type="logic">
+      <obj_property name="ElementShortName">begin_next_trans</obj_property>
+      <obj_property name="ObjectShortName">begin_next_trans</obj_property>
+   </wvobject>
+</wave_config>

@@ -1,11 +1,18 @@
+*.pptx
+*.pdf
+
 ### ====================== vivado prj=============================
 
 *.cache/
 *.runs/
 *.sim/
 *.ip_user_files/
-*.pptx
-*.pdf
+*.jou
+
+### ==================== dataset ========================
+
+*srcs/dataset/data
+*srcs/dataset/mnist_16x16
 
 ### ==================== vs prj ============================
 

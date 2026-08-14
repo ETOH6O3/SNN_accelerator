@@ -1,0 +1,5 @@
+LIBRARY hdf5_poisson_code_reader_for_dpic.dll
+EXPORTS
+getSampleSpikes
+get_hdf5_file_ptr
+read_nth_label

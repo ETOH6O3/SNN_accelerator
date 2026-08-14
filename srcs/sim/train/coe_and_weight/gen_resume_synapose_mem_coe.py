@@ -1,9 +1,9 @@
 import os
 
 with open(
-    os.path.dirname(__file__) + "/ram_data_vthr_22768_tref_15_hp_5us_17_1_105.txt", "r"
+    os.path.dirname(__file__) + "/ram_data.txt", "r"
 ) as f, open(
-    os.path.dirname(__file__) + "/ram_data_vthr_22768_tref_15_hp_5us_17_1_105.coe", "w"
+    os.path.dirname(__file__) + "/ram_data.coe", "w"
 ) as fw:
     lines = f.readlines()
     print("memory_initialization_radix = 16;", file=fw)

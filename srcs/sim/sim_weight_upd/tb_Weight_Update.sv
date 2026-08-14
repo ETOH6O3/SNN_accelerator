@@ -50,9 +50,10 @@ module tb_Weight_Update;
         unique case (mode)
             LEARN_MODE_STDP: begin
                 // 计算权重更新（饱和加法）
-                temp = {in_data.weight[7], in_data.weight}
-                     + {5'b00000, in_data.learn_var.x_pre}
-                     - {5'b00000, consts.xtar};
+                temp = int'(in_data.weight) + int'(in_data.learn_var.x_pre) - int'(consts.xtar);
+                // {in_data.weight[7], in_data.weight}
+                //      + {5'b00000, in_data.learn_var.x_pre}
+                //      - {5'b00000, consts.xtar};
                 if (temp > 9'sd127)      exp.weight = 8'sd127;
                 else if (temp < -9'sd128) exp.weight = -8'sd128;
                 else                     exp.weight = temp[7:0];

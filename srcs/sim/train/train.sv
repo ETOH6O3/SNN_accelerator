@@ -46,8 +46,9 @@ module train;
       ._W(16)
   ) sender;
   initial begin
+    $stop;
     // 恢复到上次训练终止处
-    // poisson::resume_breakpoint(146);
+    // poisson::resume_breakpoint(1);
     poisson::report_queue();
 
     sender = new(aer_r);
@@ -77,10 +78,14 @@ module train;
     wait (rst_n);
     #10;
     $display("[tb_top] @%0t: Starting to send images", $time);
-    sender.send_imgs(5us);
+    sender.send_imgs(1.3us);
   end
 
-  SNN_Accelerater SNN_Accelerater_inst (
+  SNN_Accelerater #(
+    .NeuronConst('{v_thr: 16'd42768, t_ref: 4'd13}),
+    .SrcSpikePerStepMaxExp(150),
+    .SpikePerStepMaxExp(8)
+    ) SNN_Accelerater_inst  (
       .clk(clk),
       .rst_n(rst_n),
       .aer_r(aer_r),

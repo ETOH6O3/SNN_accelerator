@@ -2,7 +2,7 @@
 // Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-// Date        : Sun Aug  9 18:22:30 2026
+// Date        : Wed Aug 12 23:31:31 2026
 // Host        : HUASHUO_U9_smm running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode synth_stub
 //               c:/MARTIN/verilog/Xilinx/projects_vivado/SNN_accelerator/SNN_accelerator.gen/sources_1/ip/BRAM_24X256/BRAM_24X256_stub.v

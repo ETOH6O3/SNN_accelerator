@@ -2,10 +2,10 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
--- Date        : Sun Aug  2 12:44:12 2026
+-- Date        : Sun Aug  2 12:44:09 2026
 -- Host        : HUASHUO_U9_smm running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode synth_stub
---               c:/MARTIN/verilog/Xilinx/projects_vivado/SNN_accelerator/SNN_accelerator.gen/sources_1/ip/AERFifo/AERFifo_stub.vhdl
+-- Command     : write_vhdl -force -mode synth_stub -rename_top AERFifo -prefix
+--               AERFifo_ AERFifo_stub.vhdl
 -- Design      : AERFifo
 -- Purpose     : Stub declaration of top-level module interface
 -- Device      : xc7k70tfbv676-1

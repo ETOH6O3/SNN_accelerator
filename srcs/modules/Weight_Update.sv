@@ -35,7 +35,7 @@ module Weight_Update
             在∆𝑤计算完成之后，还会对𝑥𝑝𝑟𝑒进行衰减操作，基于𝑥𝑝𝑟𝑒的位宽，设置其时间常数为 8，与膜电位的衰减一样，
             电路使用右移代替除法，同时小数部分大于 5 则会进位，小于等于 5 则会被舍去 // TODO: 为什么是 5 ？
             ****************************************************************************************************/
-        synapse_data_o.learn_var.x_pre <= synapse_data_i.learn_var.x_pre - (synapse_data_i.learn_var.x_pre >> 3) - (synapse_data_i.learn_var.x_pre[2:0] > 4);
+        synapse_data_o.learn_var.x_pre <= synapse_data_i.learn_var.x_pre - (synapse_data_i.learn_var.x_pre >> 3) - (synapse_data_i.learn_var.x_pre[2:0] >= 4);
       end
       LEARN_MODE_SDSP: begin
         /***************************************************************************************************

@@ -99,7 +99,7 @@ module aer_loop_tb;
 
   initial begin
 
-    automatic int err_cnt = 0;
+    automatic int error_count = 0;
 
     injection_en = 0;
     inj_vld = 0;
@@ -114,8 +114,7 @@ module aer_loop_tb;
       @(posedge dbg_m_axis_tvalid);
       if (dbg_m_axis_tdata != i) begin
         $display("[%0t]ERROR: Expected %d, got %d", $time, i, dbg_m_axis_tdata);
-        $stop;
-        err_cnt++;
+        error_count++;
       end
       @(posedge clk2);
       #1ps;
@@ -167,8 +166,7 @@ module aer_loop_tb;
           @(posedge dbg_m_axis_tvalid);
           if (dbg_m_axis_tdata != inj_datas[0]) begin
             $display("[%0t]ERROR: Expected %d, got %d", $time, inj_datas[0], dbg_m_axis_tdata);
-            $stop;
-            err_cnt++;
+            error_count++;
           end
           inj_datas.pop_front();
           $write("report queue: ");
@@ -187,8 +185,12 @@ module aer_loop_tb;
     end
 
     // over
-    $display("test over, total errors: %d", err_cnt);
-    $finish;
+    if (error_count == 0) begin
+      $display("\n===== Simulation completed: ALL CHECKS PASSED =====");
+    end else begin
+      $display("\n===== Simulation completed: %0d CHECK(S) FAILED =====", error_count);
+    end
+    $finish(error_count);
 
   end
 

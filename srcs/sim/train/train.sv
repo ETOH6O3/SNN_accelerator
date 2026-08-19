@@ -28,8 +28,6 @@ module train;
   initial begin
     rst_n = 0;
     #20 rst_n = 1;
-
-    // $stop;
   end
   logic clk;
   initial begin
@@ -46,9 +44,8 @@ module train;
       ._W(16)
   ) sender;
   initial begin
-    $stop;
     // 恢复到上次训练终止处
-    // poisson::resume_breakpoint(1);
+    poisson::resume_breakpoint(266);
     poisson::report_queue();
 
     sender = new(aer_r);
@@ -82,7 +79,14 @@ module train;
   end
 
   SNN_Accelerater #(
-    .NeuronConst('{v_thr: 16'd42768, t_ref: 4'd13}),
+    .NeuronConst('{v_thr: 16'd35000, t_ref: 4'd0}),
+    .LearnConst('{
+        xtar: 4'd9,
+        theta_m: 16'd256,
+        ca_theta_1: 4'd3,
+        ca_theta_2: 4'd8,
+        ca_theta_3: 4'd13
+    }),
     .SrcSpikePerStepMaxExp(150),
     .SpikePerStepMaxExp(8)
     ) SNN_Accelerater_inst  (

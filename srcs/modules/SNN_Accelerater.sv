@@ -114,11 +114,12 @@ module SNN_Accelerater
       .valid(aer_out_fifo_vld),
       .FIFO_pop(aer_pop_out_fifo)
   );
+  logic out_fifo_ready;
   AERFifo out_fifo (
       .s_axis_aresetn(rst_n),                        //input wire s_axis_aresetn
       .s_axis_aclk   (clk),                          //input wire s_axis_aclk
       .s_axis_tvalid (spike),                        //input wire s_axis_tvalid
-      .s_axis_tready (  /*运算不允许阻塞*/),  //output wire s_axis_tready
+      .s_axis_tready (out_fifo_ready),  //output wire s_axis_tready
       .s_axis_tdata  (neuron_addr_W),                //input wire [7 : 0] s_axis_tdata
       .m_axis_tvalid (out_fifo_vld),                 //output wire m_axis_tvalid
       .m_axis_tready (out_fifo_pop),                 //input wire m_axis_tready
@@ -128,6 +129,16 @@ module SNN_Accelerater
   assign aer_out_fifo_vld = enable_learn_reg ? 1'b0 : out_fifo_vld;
   assign cu_out_fifo_vld = enable_learn_reg ? out_fifo_vld : 1'bx /*控制模块此时用不到此信号*/;
   assign out_fifo_pop = enable_learn_reg ? cu_pop_out_fifo : aer_pop_out_fifo;
+  // 仿真断言
+  initial begin
+    wait(rst_n === 1'b1);
+    forever begin
+      @(posedge clk);
+      assert (out_fifo_ready || (ctrl_step !== UPDATE_II)) else begin
+        $fatal(1, "[SNN_Accelerater] @%0t: ERROR: out_fifo not ready", $time);
+      end
+    end
+  end
 
   // ------------------------------------------内存--------------------------------------------------
   BRAM_24X256 neuron_mem (

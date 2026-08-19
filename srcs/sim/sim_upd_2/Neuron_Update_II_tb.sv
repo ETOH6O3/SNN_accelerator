@@ -369,7 +369,7 @@ module Neuron_Update_II_tb;
             $display("RESULT      : SOME TESTS FAILED!");
         $display("==================================\n");
 
-        $finish;
+        $finish(error_count);
     end
 
 endmodule

@@ -20,7 +20,7 @@ def create_grayscale_image(data, save_path='output.png'):
         raise ValueError(f"数据长度必须为 65536，实际得到 {data.size}")
 
     # 1. 将 [-1, 1] 映射到 [0, 255] 灰度值
-    gray = (data + 1.0) / 2.0 * 255.0
+    gray = 255 - (data + 1.0) / 2.0 * 255.0
     gray = np.clip(gray, 0, 255).astype(np.uint8)
 
     # 2. 计算每个数值的像素坐标
@@ -54,7 +54,7 @@ with open(os.path.dirname(__file__) + "/ram_data.txt", "r") as f:
     lines = f.readlines()
     weights = [extract_weight(line) for line in lines]
 
-    plt.hist(weights, bins=20, edgecolor='black')
+    plt.hist(weights, bins=50, edgecolor='black')
     plt.xlabel("Weight Value")
     plt.ylabel("Frequency")
     plt.title("Distribution of Weights")

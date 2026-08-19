@@ -16,7 +16,7 @@ _参见论文[《基于 FPGA 的高能效脉冲神经网络硬件加速器设计
 | --------- | --------- | ------------- | -------------- |
 | clk       | input     | logic         | 时钟信号           |
 | rst\_n    | input     | logic         | 复位信号           |
-| interval  | input     | logic [17:0] | 时间步长度 (/ticks) |
+| interval  | input     | logic [17:0] | 时间步长度 (/ticks)，不允许为 0 |
 | timestep0 | output    | logic         | 时间步信号最低位       |
 
 ---

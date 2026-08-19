@@ -20,7 +20,7 @@ module Neuron_Update_I_tb;
   logic                         cpt_rst;
   data_types_pkg::neuron_data_t nd_i;
   data_types_pkg::neuron_data_t nd_o;
-  int unsigned                  check_failures = 0;
+  int                           error_count = 0;
 
   function automatic int unsigned round_shift(input int unsigned value, input int unsigned shift);
     round_shift = (value >> shift) + value[shift-1];
@@ -55,7 +55,7 @@ module Neuron_Update_I_tb;
     if ((actual.v_mem !== expected.v_mem) ||
             (actual.t_ref !== expected.t_ref) ||
             (actual.calcium !== expected.calcium)) begin
-      check_failures++;
+      error_count++;
       $error("\t\t\tFAIL\n  expected: %s\n  actual  : %s",
              data_types_pkg::neuron_data_to_string(expected),
              data_types_pkg::neuron_data_to_string(actual));
@@ -204,12 +204,13 @@ module Neuron_Update_I_tb;
 
 
 
-    if (check_failures == 0) begin
+    if (error_count == 0) begin
       $display("\n===== Simulation completed: ALL CHECKS PASSED =====");
-      $finish;
     end else begin
-      $fatal(1, "\n===== Simulation completed: %0d CHECK(S) FAILED =====", check_failures);
+      $display("\n===== Simulation completed: %0d CHECK(S) FAILED =====", error_count);
     end
+
+    $finish(error_count);
   end
 
 

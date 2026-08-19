@@ -436,13 +436,12 @@ module tb_Weight_Update;
         // ------------------------------------------------------------
         // 最终报告
         // ------------------------------------------------------------
-        $display("\n========== Testbench completed ==========");
         if (error_count == 0) begin
-            $display("All tests PASSED (auto-check).");
+            $display("\n===== Simulation completed: ALL CHECKS PASSED =====");
         end else begin
-            $display("ERROR: %0d test(s) FAILED (auto-check).", error_count);
+            $display("\n===== Simulation completed: %0d CHECK(S) FAILED =====", error_count);
         end
-        $finish;
+        $finish(error_count);
     end
 
 endmodule

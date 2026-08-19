@@ -98,7 +98,6 @@ module aer_rx #(
   // type(aer.addr) m_axis_tdata_sync;
 
   always_ff @(posedge clk) begin
-    // m_axis_tdata_sync <= aer.addr;
     if (mtvld_next) m_axis_tdata <= aer.addr;
   end
 

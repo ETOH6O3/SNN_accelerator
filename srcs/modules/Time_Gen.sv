@@ -6,6 +6,16 @@ module Time_Gen (
     output logic timestep0
 );
 
+  initial begin
+    forever begin
+      @(negedge clk);
+      if (interval == 0) begin
+        $fatal(1, "[Time_Gen] @%0t: ERROR: interval must be greater than 0", $time);
+      end
+      // == 1 或 最大值 时能正确处理
+    end
+  end
+
   logic [17:0] counter;
   always_ff @(posedge clk or negedge rst_n) begin : cnt
     if (!rst_n) begin

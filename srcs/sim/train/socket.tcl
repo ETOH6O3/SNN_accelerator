@@ -1,15 +1,15 @@
-# ´¦Àí¿Í»§¶ËÁ¬½Ó
+# ï¿½ï¿½ï¿½ï¿½ï¿½Í»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 proc handleClient {sock addr port} {
     fileevent $sock readable [list processCommands $sock]
 }
 
-# ´¦Àí½ÓÊÕµ½µÄÃüÁî²¢·µ»Ø½á¹û
+# ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Õµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½î²¢ï¿½ï¿½ï¿½Ø½ï¿½ï¿½
 proc processCommands {sock} {
     if {[gets $sock line] < 0} {
         close $sock
         return
     }
-    # Ö´ÐÐÃüÁî²¢²¶»ñÊä³ö
+    # Ö´ï¿½ï¿½ï¿½ï¿½ï¿½î²¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     if {[catch {eval $line} result]} {
         set output "Error: $result"
     } else {
@@ -20,25 +20,25 @@ proc processCommands {sock} {
 }
 
 proc rputs {msg} {
-    puts $msg          ;# Êä³öµ½ Vivado ¿ØÖÆÌ¨
-    return $msg        ;# ·µ»Ø¸ø¿Í»§¶Ë
+    puts $msg          ;# ï¿½ï¿½ï¿½ï¿½ï¿½ Vivado ï¿½ï¿½ï¿½ï¿½Ì¨
+    return $msg        ;# ï¿½ï¿½ï¿½Ø¸ï¿½ï¿½Í»ï¿½ï¿½ï¿½
 }
 
-# ÔÚ¶Ë¿Ú 1145 ÉÏÆô¶¯·þÎñÆ÷
+# ï¿½Ú¶Ë¿ï¿½ 1145 ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
-# ×Ô¶¨Òåº¯Êý£º¸ù¾Ý¶Ë¿ÚºÅ¹Ø±Õ¶ÔÓ¦µÄ server socket£¨Vivado ¼æÈÝ°æ£©
+# ï¿½Ô¶ï¿½ï¿½åº¯ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¶Ë¿ÚºÅ¹Ø±Õ¶ï¿½Ó¦ï¿½ï¿½ server socketï¿½ï¿½Vivado ï¿½ï¿½ï¿½Ý°æ£©
 proc close_port {pnum} {
     foreach ch [file channels] {
         if {[catch {fconfigure $ch -sockname} sockInfo]} {
             continue
         }
         if {[llength $sockInfo] >= 2 && [lindex $sockInfo 1] == $pnum} {
-            puts "ÕÒµ½Õ¼ÓÃ¶Ë¿Ú $pnum µÄÍ¨µÀ: $ch£¬ÕýÔÚ¹Ø±Õ..."
+            puts "ï¿½Òµï¿½Õ¼ï¿½Ã¶Ë¿ï¿½ $pnum ï¿½ï¿½Í¨ï¿½ï¿½: $chï¿½ï¿½ï¿½ï¿½ï¿½Ú¹Ø±ï¿½..."
             catch {close $ch}
             return 0
         }
     }
-    puts "¶Ë¿Ú $pnum µ±Ç°Î´±»±¾½ø³ÌÕ¼ÓÃ¡£"
+    puts "ï¿½Ë¿ï¿½ $pnum ï¿½ï¿½Ç°Î´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Õ¼ï¿½Ã¡ï¿½"
     return 1
 }
 
@@ -49,6 +49,6 @@ if {[info exists ::serverSocket]} {
 
 close_port 1145
 
-# ½«¶Ë¿ÚºÅ´æÈë±äÁ¿
+# ï¿½ï¿½ï¿½Ë¿ÚºÅ´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 set ::serverSocket [socket -server handleClient 1145]
 # fconfigure $::serverSocket -reuseaddr 1

@@ -66,6 +66,4 @@ interface aer_if #(
   endgenerate
 `endif
 
-
-
 endinterface

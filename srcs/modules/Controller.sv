@@ -59,7 +59,7 @@ module Controller
       timestep_changed <= 1'b0;
     end else begin
       // 契约： interval 足够长，确保以下分支互斥
-      unique if (timestep0_d != timestep0) begin
+      if (timestep0_d != timestep0) begin
         timestep_changed <= 1'b1;
         // 若处于 IDLE , 下一刻进入 UPDATE_I 
       end else if (state == UPDATE_I) begin

@@ -73,23 +73,37 @@ flowchart LR
 
 通过示例：
 
-```txt
-Checked reads=79801 writes=127840 outputs=1468
-===== Simulation completed: ALL CHECKS PASSED =====
+```log
+[info|0] Logger initialized!
+ ===== SNN_Accelerater self-checking test =====
+ [info|20000] Sending 10000 events without learning
+ [info|3002350000] Sending 10000 events with STDP learning
+ Waiting for FIFO to drain...
+ [info|26002313000] Steped for 20000000 ns to drain the FIFO
+ [info|26006350000] Sending 10000 events with SDSP learning
+ Waiting for FIFO to drain...
+ [info|49006313000] Steped for 20000000 ns to drain the FIFO
+ [info|49006313000] Checked reads=252597 writes=413784 outputs=4014
+ Simulation completed: ALL CHECKS PASSED
+ Total errors: 0
 ```
 
 失败示例：
 
-```txt
+```log
 
 ......
 
-sim_snn_acc_check.log:52501:Error: [SNN_Accelerater] unexpected output target=7
-sim_snn_acc_check.log:52502:Time: 1808780 ns  Iteration: 8  Process: /tb_SNN_Accelerater
-/report_error  Scope: tb_SNN_Accelerater.report_error  File: c:/MARTIN/verilog/Xilinx/pr
-ojects_vivado/SNN_accelerator/srcs/sim/sim_snn_acc/tb_SNN_Accelerater.sv Line: 177
-sim_snn_acc_check.log:52506:Checked reads=227288 writes=276488 outputs=29104
-sim_snn_acc_check.log:52507:===== Simulation completed: 26096 CHECK(S) FAILED =====
+[error|29050450000] [SNN_Accelerater] UPDATE_II address out of range: neuron=6 synapse=2054
+[error|29050450000] [SNN_Accelerater] synapse write address out of range: 2052
+[error|29050475000] [SNN_Accelerater] UPDATE_II address out of range: neuron=7 synapse=2055
+[error|29050475000] [SNN_Accelerater] synapse write address out of range: 2053
+[error|29050500000] [SNN_Accelerater] synapse write address out of range: 2054
+[error|29050525000] [SNN_Accelerater] synapse write address out of range: 2055
+[info|49006313000] Steped for 20000000 ns to drain the FIFO
+[info|49006313000] Checked reads=252597 writes=413784 outputs=4014
+Simulation completed: SOME CHECKS FAILED
+Total errors: 45003
 ```
 
 可通过查看波形进行调试

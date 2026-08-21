@@ -1,5 +1,12 @@
 
 module aer_loop_tb;
+  import logger_pkg::*;
+
+  // Logger 实例
+  logger lg;
+  initial begin
+    lg = new(.logger_file_name("sim_aer.log"));
+  end
 
   // Parameters
 
@@ -62,7 +69,9 @@ module aer_loop_tb;
   always #(hp1_w * 1ns) clk1 = !clk1;
   always #(hp2_w * 1ns) clk2 = !clk2;
 
+  string __temp;
   initial begin
+
     hp1 = 8;
     hp2 = 12;
 
@@ -109,11 +118,11 @@ module aer_loop_tb;
     wait (dbg_init_over);
 
     // TEST1: 累加循环
-    $display("test 1: acc & loop");
+    lg.display("test 1: acc & loop");
     for (int i = 0; i != 10'h3ff; i++) begin
       @(posedge dbg_m_axis_tvalid);
       if (dbg_m_axis_tdata != i) begin
-        $display("[%0t]ERROR: Expected %d, got %d", $time, i, dbg_m_axis_tdata);
+        lg.error($sformatf("Expected %d, got %d", i, dbg_m_axis_tdata));
         error_count++;
       end
       @(posedge clk2);
@@ -121,7 +130,7 @@ module aer_loop_tb;
     end
 
     // TEST2: 极高密度注入数据
-    $display("test 2: high density injection");
+    lg.display("test 2: high density injection");
     begin
       automatic logic [9:0] inj_datas[$];
 
@@ -149,9 +158,9 @@ module aer_loop_tb;
           end
           inj_datas.push_back(inj_data);
           #1ns inj_data = $urandom_range(0, 10'h3ff);
-          $write("report queue: ");
-          foreach (inj_datas[i]) $write("%d ", inj_datas[i]);
-          $write("\n");
+          __temp = {"report queue: "};
+          foreach (inj_datas[i]) __temp = {__temp, $sformatf("%d ", inj_datas[i])};
+          lg.trace(__temp);
 
           #1ps;
 
@@ -165,13 +174,13 @@ module aer_loop_tb;
         while (injection_en) begin
           @(posedge dbg_m_axis_tvalid);
           if (dbg_m_axis_tdata != inj_datas[0]) begin
-            $display("[%0t]ERROR: Expected %d, got %d", $time, inj_datas[0], dbg_m_axis_tdata);
+            lg.error($sformatf("Expected %d, got %d", inj_datas[0], dbg_m_axis_tdata));
             error_count++;
           end
           inj_datas.pop_front();
-          $write("report queue: ");
-          foreach (inj_datas[i]) $write("%d ", inj_datas[i]);
-          $write("\n");
+          __temp = {"report queue: "};
+          foreach (inj_datas[i]) __temp = {__temp, $sformatf("%d ", inj_datas[i])};
+          lg.trace(__temp);
           #1ps;
         end
 
@@ -186,11 +195,18 @@ module aer_loop_tb;
 
     // over
     if (error_count == 0) begin
-      $display("\n===== Simulation completed: ALL CHECKS PASSED =====");
+      set_ansi_style(SuccessStyle);
+      lg.display("Simulation completed: ALL CHECKS PASSED");
     end else begin
-      $display("\n===== Simulation completed: %0d CHECK(S) FAILED =====", error_count);
+      set_ansi_style(ErrorStyle);
+      lg.display($sformatf("Simulation completed: SOME CHECKS FAILED"));
     end
-    $finish(error_count);
+    set_ansi_style('{UNDERLINE});
+    lg.write($sformatf("Total errors: %0d", error_count));
+    reset_style();
+
+    $display("");
+    $finish(0);
 
   end
 

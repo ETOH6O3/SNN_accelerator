@@ -89,9 +89,9 @@ graph LR
 
 #### 成功示例
 
-```txt
+```log
 
-...... （日志信息）
+...... 
 
 test over, total errors: 0
 ```
@@ -100,8 +100,13 @@ test over, total errors: 0
 
 任一比对不一致即打印错误并中断：
 
-```txt
-[123456]ERROR: Expected 42, got 43
+```log
+
+......
+
+[error|2042950000] Expected  605, got  907
+Simulation completed: SOME CHECKS FAILED
+Total errors: 11
 ```
 
 出现 `ERROR` 说明回环中存在丢数、乱序或数据损坏，需要结合波形和控制台日志输出定位。

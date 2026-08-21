@@ -63,138 +63,102 @@ flowchart LR
 
 #### 成功示例
 
-```txt
+```log
 
+[info|0] Logger initialized!
+ 
 ========== START SELF-CHECKING TEST ==========
 
---- Test 1: Refractory period suppression ---
-[51000] T1_Refractory
-  Input  : neuron : v_mem=0x0080 (1.000000)(128), t_ref=2, calcium=5
-           synapse : weight=0x10 (0.125000)(16), learn_var= 0
-  Output : neuron : v_mem=0x0080 (1.000000)(128), t_ref=2, calcium=5
-           synapse : weight=0x10 (0.125000)(16), learn_var= 0
-           spike = 0
-[PASS]  T1_Refractory
-
+ --- Test 1: Refractory period suppression ---
+ [info|51000] T1_Refractory:
+ neuron_i=v_mem=0x0080 (1.000000)(128), t_ref=2, calcium=5
+  synapse_i=weight=0x10 (0.125000)(16), learn_var= 0
+ neuron_o=v_mem=0x0080 (1.000000)(128), t_ref=2, calcium=5
+  synapse_o=weight=0x10 (0.125000)(16), learn_var= 0
+ spike=0
+ [info|51000] [PASS]  T1_Refractory
+ 
 --- Test 2: Positive weight accumulation & fire ---
-[111000] T2a_Pos_Accum
-  Input  : neuron : v_mem=0x58be (177.484375)(22718), t_ref=0, calcium=5
-           synapse : weight=0x10 (0.125000)(16), learn_var= 0
-  Output : neuron : v_mem=0x58ce (177.609375)(22734), t_ref=0, calcium=5
-           synapse : weight=0x10 (0.125000)(16), learn_var= 0
-           spike = 0
-[PASS]  T2a_Pos_Accum
+ [info|111000] T2a_Pos_Accum:
+ neuron_i=v_mem=0x58be (177.484375)(22718), t_ref=0, calcium=5
+  synapse_i=weight=0x10 (0.125000)(16), learn_var= 0
+ neuron_o=v_mem=0x58ce (177.609375)(22734), t_ref=0, calcium=5
+  synapse_o=weight=0x10 (0.125000)(16), learn_var= 0
+ spike=0
+ [info|111000] [PASS]  T2a_Pos_Accum
 
 ......
-
-[171000] T2a_Pos_Accum
-  Input  : neuron : v_mem=0x58ee (177.859375)(22766), t_ref=0, calcium=5
-           synapse : weight=0x10 (0.125000)(16), learn_var= 0
-  Output : neuron : v_mem=0x0000 (0.000000)(0), t_ref=7, calcium=5
-           synapse : weight=0x10 (0.125000)(16), learn_var= 0
-           spike = 1
-[PASS]  T2a_Pos_Accum
-[191000] T2a_Pos_Accum
-  Input  : neuron : v_mem=0x0000 (0.000000)(0), t_ref=7, calcium=5
-           synapse : weight=0x10 (0.125000)(16), learn_var= 0
-  Output : neuron : v_mem=0x0000 (0.000000)(0), t_ref=7, calcium=5
-           synapse : weight=0x10 (0.125000)(16), learn_var= 0
-           spike = 0
-[PASS]  T2a_Pos_Accum
-
+ 
 --- Test 3: Negative weight (inhibition) ---
-[231000] T3a_Neg_Accum
-  Input  : neuron : v_mem=0x0011 (0.132812)(17), t_ref=0, calcium=5
-           synapse : weight=0xf0 (-0.125000)(-16), learn_var= 0
-  Output : neuron : v_mem=0x0001 (0.007812)(1), t_ref=0, calcium=5
-           synapse : weight=0xf0 (-0.125000)(-16), learn_var= 0
-           spike = 0
-[PASS]  T3a_Neg_Accum
-
+ [info|231000] T3a_Neg_Accum:
+ neuron_i=v_mem=0x0011 (0.132812)(17), t_ref=0, calcium=5
+  synapse_i=weight=0xf0 (-0.125000)(-16), learn_var= 0
+ neuron_o=v_mem=0x0001 (0.007812)(1), t_ref=0, calcium=5
+  synapse_o=weight=0xf0 (-0.125000)(-16), learn_var= 0
+ spike=0
+ [info|231000] [PASS]  T3a_Neg_Accum
 
 ......
-
+ 
 --- Test 4: STDP learning mode ---
-[331000] T4a_STDP_Basic
-  Input  : neuron : v_mem=0x0000 (0.000000)(0), t_ref=0, calcium=7
-           synapse : weight=0x10 (0.125000)(16), learn_var= 5
-  Output : neuron : v_mem=0x0010 (0.125000)(16), t_ref=0, calcium=0
-           synapse : weight=0x10 (0.125000)(16), learn_var= 6
-           spike = 0
-[PASS]  T4a_STDP_Basic
-[371000] T4b_STDP_Saturation
-  Input  : neuron : v_mem=0x0010 (0.125000)(16), t_ref=0, calcium=0
-           synapse : weight=0x10 (0.125000)(16), learn_var=15
-  Output : neuron : v_mem=0x0020 (0.250000)(32), t_ref=0, calcium=0
-           synapse : weight=0x10 (0.125000)(16), learn_var=15
-           spike = 0
-[PASS]  T4b_STDP_Saturation
-
---- Test 5: SDSP learning mode ---
-[411000] T5a_SDSP_Pos
-  Input  : neuron : v_mem=0x0100 (2.000000)(256), t_ref=0, calcium=5
-           synapse : weight=0x00 (0.000000)(0), learn_var= 0
-  Output : neuron : v_mem=0x0100 (2.000000)(256), t_ref=0, calcium=5
-           synapse : weight=0x00 (0.000000)(0), learn_var= 1
-           spike = 0
-[PASS]  T5a_SDSP_Pos
+ [info|331000] T4a_STDP_Basic:
+ neuron_i=v_mem=0x0000 (0.000000)(0), t_ref=0, calcium=7
+  synapse_i=weight=0x10 (0.125000)(16), learn_var= 5
+ neuron_o=v_mem=0x0010 (0.125000)(16), t_ref=0, calcium=0
+  synapse_o=weight=0x10 (0.125000)(16), learn_var= 6
+ spike=0
+ [info|331000] [PASS]  T4a_STDP_Basic
 
 ......
+ 
+--- Test 5: SDSP learning mode ---
+ [info|411000] T5a_SDSP_Pos:
+ neuron_i=v_mem=0x0100 (2.000000)(256), t_ref=0, calcium=5
+  synapse_i=weight=0x00 (0.000000)(0), learn_var= 0
+ neuron_o=v_mem=0x0100 (2.000000)(256), t_ref=0, calcium=5
+  synapse_o=weight=0x00 (0.000000)(0), learn_var= 1
+ spike=0
+ [info|411000] [PASS]  T5a_SDSP_Pos
 
+......
+ 
 --- Test 6: Learning disabled ---
-[571000] T6_Learn_Disabled
-  Input  : neuron : v_mem=0x0100 (2.000000)(256), t_ref=0, calcium=3
-           synapse : weight=0x10 (0.125000)(16), learn_var= 5
-  Output : neuron : v_mem=0x0110 (2.125000)(272), t_ref=0, calcium=3
-           synapse : weight=0x10 (0.125000)(16), learn_var= 5
-           spike = 0
-[PASS]  T6_Learn_Disabled
-
+ [info|571000] T6_Learn_Disabled:
+ neuron_i=v_mem=0x0100 (2.000000)(256), t_ref=0, calcium=3
+  synapse_i=weight=0x10 (0.125000)(16), learn_var= 5
+ neuron_o=v_mem=0x0110 (2.125000)(272), t_ref=0, calcium=3
+  synapse_o=weight=0x10 (0.125000)(16), learn_var= 5
+ spike=0
+ [info|571000] [PASS]  T6_Learn_Disabled
+ 
 --- Test 7: Learning during refractory (STDP) ---
-[611000] T7_Refractory_Learn
-  Input  : neuron : v_mem=0x0100 (2.000000)(256), t_ref=3, calcium=9
-           synapse : weight=0x10 (0.125000)(16), learn_var= 2
-  Output : neuron : v_mem=0x0100 (2.000000)(256), t_ref=3, calcium=0
-           synapse : weight=0x10 (0.125000)(16), learn_var= 3
-           spike = 0
-[PASS]  T7_Refractory_Learn
-
-========== TEST SUMMARY ==========
-Total Tests : 17
-Passed      : 17
-Failed      : 0
-RESULT      : ALL TESTS PASSED!
-==================================
+ [info|611000] T7_Refractory_Learn:
+ neuron_i=v_mem=0x0100 (2.000000)(256), t_ref=3, calcium=9
+  synapse_i=weight=0x10 (0.125000)(16), learn_var= 2
+ neuron_o=v_mem=0x0100 (2.000000)(256), t_ref=3, calcium=0
+  synapse_o=weight=0x10 (0.125000)(16), learn_var= 3
+ spike=0
+ [info|611000] [PASS]  T7_Refractory_Learn
+ Simulation completed: ALL CHECKS PASSED
+ Total errors: 0
 ```
 
 #### 失败示例
 
 若校验失败，输出将显示具体错误:
 
-```txt
+```log
 ========== START SELF-CHECKING TEST ==========
 
 ......
 
-[131000] Negative underflow to 0
-  Input  : neuron : v_mem=0x0001 (0.007812), t_ref=0, calcium=0
-           synapse : weight=0xf0 (-0.125000), learn_var= 0
-  Output : neuron : v_mem=0x0000 (0.000000), t_ref=7, calcium=0
-           synapse : weight=0xf0 (-0.125000), learn_var= 0
-           spike = 1
-[ERROR] T3b_Neg_Underflow: neuron_data_o mismatch
-  Expected: v_mem=0x0000 (0.000000), t_ref=0, calcium=0
-  Actual  : v_mem=0x0000 (0.000000), t_ref=7, calcium=0
-[ERROR] T3b_Neg_Underflow: spike mismatch (exp=0, got=1)
+[error|371000] T4b_STDP_Saturation: neuron_data_o mismatch (exp=v_mem=0x0020 (0.250000)(32), t_ref=0, calcium=0, got=v_mem=0x0020 (0.250000)(32), t_ref=0, calcium=7)
 
 ......
 
-========== TEST SUMMARY ==========
-Total Tests : 13
-Passed      : 12
-Failed      : 1
-RESULT      : SOME TESTS FAILED!
-==================================
+[error|611000] T7_Refractory_Learn: neuron_data_o mismatch (exp=v_mem=0x0100 (2.000000)(256), t_ref=3, calcium=0, got=v_mem=0x0100 (2.000000)(256), t_ref=3, calcium=9)
+Simulation completed: SOME CHECKS FAILED
+Total errors: 3
 ```
 
 ### 波形

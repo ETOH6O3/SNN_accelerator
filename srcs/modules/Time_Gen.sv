@@ -2,7 +2,7 @@
 module Time_Gen (
     input logic clk,
     input logic rst_n,
-    input logic [17:0] interval, // TODO: 位宽有疑惑，据计算，18 位即足够，然而论文表 4-1 给出的是 20 位，图 4-4 给出的是 16 位
+    input logic [17:0] interval,
     output logic timestep0
 );
 

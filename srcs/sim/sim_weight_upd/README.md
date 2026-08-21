@@ -57,77 +57,96 @@ flowchart LR
 
 #### 成功示例
 
-```txt
+```log
+[info|0] Logger initialized!
+ 
 ========== Starting Weight_Update Testbench ==========
 
-=== Test 1: STDP weight update with saturation ===
+ === Test 1: STDP weight update with saturation ===
+ [info|16000] 
 [STDP] Input:  weight=0x78 (0.937500)(120), learn_var=15
 [STDP] Output: weight=0x7f (0.992188)(127), learn_var=13
 Expected weight: 127 (saturated)
+ [info|16000]   [AUTO-CHECK] PASS
 
-  [AUTO-CHECK] PASS
+ [info|26000] 
 [STDP] Input:  weight=0x88 (-0.937500)(-120), learn_var= 0
 [STDP] Output: weight=0x80 (-1.000000)(-128), learn_var= 0
 Expected weight: -128 (saturated)
+ [info|26000]   [AUTO-CHECK] PASS
 
-......
+ ......
 
-Expected weight: -53
-
-  [AUTO-CHECK] PASS
-=== Test 2: STDP x_pre decay (rounding) ===
-x_pre in= 0, out= 0 (correct expected =  0)
-x_pre in= 1, out= 1 (correct expected =  1)
-x_pre in= 2, out= 2 (correct expected =  2)
-
-......
-
+ === Test 2: STDP x_pre decay (rounding) ===
+ [info|56000] x_pre in= 0, out= 0 (correct expected =  0)
+ [info|66000] x_pre in= 1, out= 1 (correct expected =  1)
+ [info|76000] x_pre in= 2, out= 2 (correct expected =  2)
+ [info|86000] x_pre in= 3, out= 3 (correct expected =  3)
+ [info|96000] x_pre in= 4, out= 3 (correct expected =  3)
+ 
+ ......
+ 
 === Test 3: SDSP direction and saturation ===
+ [info|216000] 
 [SDSP] Input:  weight=0x0a (0.078125)(10), learn_var= 1
 [SDSP] Output: weight=0x0b (0.085938)(11), learn_var= 1
 Expected weight: 11
+ [info|216000]   [AUTO-CHECK] PASS
 
-  [AUTO-CHECK] PASS
+ [info|226000] 
 [SDSP] Input:  weight=0x7f (0.992188)(127), learn_var= 1
 [SDSP] Output: weight=0x7f (0.992188)(127), learn_var= 1
 Expected weight: 127 (saturated)
+ [info|226000]   [AUTO-CHECK] PASS
 
+ ......
 
-......
+ === Test 4: SDSP learn_var passthrough ===
+ [info|276000] 
+[SDSP] Input:  weight=0x00 (0.000000)(0), learn_var= 1
+[SDSP] Output: weight=0x01 (0.007812)(1), learn_var= 1
+Expected learn_var: unchanged (passthrough)
+ [info|276000]   [AUTO-CHECK] PASS
 
-  [AUTO-CHECK] PASS
-=== Test 4: SDSP learn_var passthrough ===
-Input learn_var =  1, Output learn_var =  1
-Expected: learn_var unchanged (passthrough)
+ === Test 5: Consistency with paper  ===
+ [info|286000] 
+[STDP] Input:  weight=0x86 (-0.953125)(-122), learn_var= 0
+[STDP] Output: weight=0x80 (-1.000000)(-128), learn_var= 0
+Expected learn_var: 0 (unchanged)
+ [info|286000]   [AUTO-CHECK] PASS
 
-  [AUTO-CHECK] PASS
-=== Test 5: Consistency with paper  ===
-Input learn_var =  0, Output learn_var =  0
-  [AUTO-CHECK] PASS
-Input learn_var = 10, Output learn_var =  9
-  [AUTO-CHECK] PASS
-Input learn_var =  4, Output learn_var =  3
-  [AUTO-CHECK] PASS
+ [info|296000] 
+[STDP] Input:  weight=0xb4 (-0.593750)(-76), learn_var=10
+[STDP] Output: weight=0xb6 (-0.578125)(-74), learn_var= 9
+Expected learn_var: 9 (decremented)
+ [info|296000]   [AUTO-CHECK] PASS
 
-========== Testbench completed ==========
-All tests PASSED (auto-check).
+ [info|306000] 
+[STDP] Input:  weight=0xf2 (-0.109375)(-14), learn_var= 4
+[STDP] Output: weight=0xee (-0.140625)(-18), learn_var= 3
+Expected learn_var: 3 (decremented)
+ [info|306000]   [AUTO-CHECK] PASS
+
+ Simulation completed: ALL CHECKS PASSED
+ Total errors: 0
 ```
 
 #### 失败示例
 
 若校验失败，输出将显示具体错误：
 
-```txt
+```log
 
 ......
 
-    [AUTO-CHECK] PASS
-Input learn_var =  4, Output learn_var =  4
-Error:   [AUTO-CHECK] Mismatch! Expected x_pre=3, Got 4
-Time: 306 ns  Iteration: 0  Process: /tb_Weight_Update/Initial87_2/Block417_18  Scope: tb_Weight_Update.Block417_18  File: C:/MARTIN/verilog/Xilinx/projects_vivado/SNN_accelerator/srcs/sim/sim_weight_upd/tb_Weight_Update.sv Line: 428
-
-========== Testbench completed ==========
-ERROR: 3 test(s) FAILED (auto-check).
+[info|306000] 
+[STDP] Input:  weight=0xf2 (-0.109375)(-14), learn_var= 4
+[STDP] Output: weight=0xee (-0.140625)(-18), learn_var= 4
+Expected learn_var: 3 (decremented)
+[error|306000]   [AUTO-CHECK] Mismatch! Expected x_pre=3, Got 4
+Simulation completed: SOME CHECKS FAILED
+Total errors: 3
+$finish called at time : 306 ns
 ```
 
 ### 波形

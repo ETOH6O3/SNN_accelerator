@@ -58,77 +58,69 @@ flowchart LR
 
 #### 成功示例
 
-```txt
-===== Test 1: Leakage and Calcium decay =====
-[31000] Test 1: nd_i=v_mem=0xf000 (480.000000)(61440), t_ref=0, calcium=15
-   PASS: v_mem=0xe880 (465.000000)(59520), t_ref=0, calcium=13
-[32000] Test 1: nd_i=v_mem=0xe880 (465.000000)(59520), t_ref=0, calcium=13
-   PASS: v_mem=0xe13c (450.468750)(57660), t_ref=0, calcium=11
-[33000] Test 1: nd_i=v_mem=0xe13c (450.468750)(57660), t_ref=0, calcium=11
-   PASS: v_mem=0xda32 (436.390625)(55858), t_ref=0, calcium=10
+```log
+[info|0] Logger initialized!
+ ===== Test 1: Leakage and Calcium decay =====
+ [info|31000] Test 1: nd_i=v_mem=0xf000 (480.000000)(61440), t_ref=0, calcium=15
+ [info|31000] PASS: v_mem=0xe880 (465.000000)(59520), t_ref=0, calcium=13
+ [info|32000] Test 1: nd_i=v_mem=0xe880 (465.000000)(59520), t_ref=0, calcium=13
 
 ......
 
-===== Test 2: Competitive reset (cpt_rst=1) =====
-[61000] Test 2: nd_i=v_mem=0x5c96 (185.171875)(23702), t_ref=5, calcium=3
-   PASS: v_mem=0x0000 (0.000000)(0), t_ref=0, calcium=3
-
-===== Test 3: Refractory period decrement =====
-[62000] Test 3: nd_i=v_mem=0x3000 (96.000000)(12288), t_ref=10, calcium=10
-   PASS: v_mem=0x3000 (96.000000)(12288), t_ref=9, calcium=10
-[63000] Test 3: nd_i=v_mem=0x3000 (96.000000)(12288), t_ref=9, calcium=10
-   PASS: v_mem=0x3000 (96.000000)(12288), t_ref=8, calcium=10
-[64000] Test 3: nd_i=v_mem=0x3000 (96.000000)(12288), t_ref=8, calcium=10
-   PASS: v_mem=0x3000 (96.000000)(12288), t_ref=7, calcium=10
-
-......
-
-===== Test 4: Stabilization near zero =====
-[77000] Test 4: nd_i=v_mem=0x0012 (0.140625)(18), t_ref=0, calcium=1
-   PASS: v_mem=0x0011 (0.132812)(17), t_ref=0, calcium=1
-[78000] Test 4: nd_i=v_mem=0x0011 (0.132812)(17), t_ref=0, calcium=1
-   PASS: v_mem=0x0010 (0.125000)(16), t_ref=0, calcium=1
-[79000] Test 4: nd_i=v_mem=0x0010 (0.125000)(16), t_ref=0, calcium=1
-   PASS: v_mem=0x000f (0.117188)(15), t_ref=0, calcium=1
-[80000] Test 4: nd_i=v_mem=0x000f (0.117188)(15), t_ref=0, calcium=1
-   PASS: v_mem=0x000f (0.117188)(15), t_ref=0, calcium=1
+ ===== Test 2: Competitive reset (cpt_rst=1) =====
+ [info|61000] Test 2: nd_i=v_mem=0x5c96 (185.171875)(23702), t_ref=5, calcium=3
+ [info|61000] PASS: v_mem=0x0000 (0.000000)(0), t_ref=0, calcium=3
+ ===== Test 3: Refractory period decrement =====
+ [info|62000] Test 3: nd_i=v_mem=0x3000 (96.000000)(12288), t_ref=10, calcium=10
+ [info|62000] PASS: v_mem=0x3000 (96.000000)(12288), t_ref=9, calcium=10
+ [info|63000] Test 3: nd_i=v_mem=0x3000 (96.000000)(12288), t_ref=9, calcium=10
+ [info|63000] PASS: v_mem=0x3000 (96.000000)(12288), t_ref=8, calcium=10
+ [info|64000] Test 3: nd_i=v_mem=0x3000 (96.000000)(12288), t_ref=8, calcium=10
+ [info|64000] PASS: v_mem=0x3000 (96.000000)(12288), t_ref=7, calcium=10
 
 ......
 
-===== Test 5: Consistency with paper =====
-[85000] Test 5: nd_i=v_mem=0x02e8 (5.812500)(744), t_ref=0, calcium=7
-   PASS: v_mem=0x02d1 (5.632812)(721), t_ref=0, calcium=6
-
-===== Test 6: Boundary rounding =====
-[86000] Test 6a i: nd_i=v_mem=0x002f (0.367188)(47), t_ref=0, calcium=0
-   PASS: v_mem=0x002e (0.359375)(46), t_ref=0, calcium=0
-[87000] Test 6a ii: nd_i=v_mem=0x0030 (0.375000)(48), t_ref=0, calcium=0
-   PASS: v_mem=0x002e (0.359375)(46), t_ref=0, calcium=0
-[88000] Test 6a iii: nd_i=v_mem=0x0031 (0.382812)(49), t_ref=0, calcium=0
-   PASS: v_mem=0x002f (0.367188)(47), t_ref=0, calcium=0
+ ===== Test 4: Stabilization near zero =====
+ [info|77000] Test 4: nd_i=v_mem=0x0012 (0.140625)(18), t_ref=0, calcium=1
+ [info|77000] PASS: v_mem=0x0011 (0.132812)(17), t_ref=0, calcium=1
+ [info|78000] Test 4: nd_i=v_mem=0x0011 (0.132812)(17), t_ref=0, calcium=1
+ [info|78000] PASS: v_mem=0x0010 (0.125000)(16), t_ref=0, calcium=1
 
 ......
 
-===== Simulation completed: ALL CHECKS PASSED =====
+ ===== Test 5: Consistency with paper =====
+ [info|85000] Test 5: nd_i=v_mem=0x02e8 (5.812500)(744), t_ref=0, calcium=7
+ [info|85000] PASS: v_mem=0x02d1 (5.632812)(721), t_ref=0, calcium=6
+ ===== Test 6: Boundary rounding =====
+ [info|86000] Test 6a i: nd_i=v_mem=0x002f (0.367188)(47), t_ref=0, calcium=0
+ [info|86000] PASS: v_mem=0x002e (0.359375)(46), t_ref=0, calcium=0
+ [info|87000] Test 6a ii: nd_i=v_mem=0x0030 (0.375000)(48), t_ref=0, calcium=0
+ [info|87000] PASS: v_mem=0x002e (0.359375)(46), t_ref=0, calcium=0
+ [info|88000] Test 6a iii: nd_i=v_mem=0x0031 (0.382812)(49), t_ref=0, calcium=0
+ [info|88000] PASS: v_mem=0x002f (0.367188)(47), t_ref=0, calcium=0
+
+......
+
+ Simulation completed: ALL CHECKS PASSED
+ Total errors: 0
 ```
 
 #### 失败示例
 
 若校验失败，输出将显示具体错误：
 
-```txt
+```log
 
 ......
 
-Error: [631000] Test 2 FAIL
-  expected: v_mem=0x0000 (0.000000), t_ref=0, calcium=3
-  actual  : v_mem=0x0000 (0.000000), t_ref=0, calcium=0
-Time: 631 ns  Iteration: 0  Process: /tb_Neuron_Update_I/check_neuron_data  Scope: tb_Neuron_Update_I.check_neuron_data  File: xxx/srcs/sim/sim_upd_1/Neuron_Update_I_tb.sv Line: 59
+[error|153000] FAIL
+  expected: v_mem=0x000f (0.117188)(15), t_ref=0, calcium=4
+  actual  : v_mem=0x000f (0.117188)(15), t_ref=0, calcium=3
 
 ......
 
-Fatal: 
-===== Simulation completed: 1 CHECK(S) FAILED =====
+Simulation completed: SOME CHECKS FAILED
+Total errors: 7
 ```
 
 ### 波形

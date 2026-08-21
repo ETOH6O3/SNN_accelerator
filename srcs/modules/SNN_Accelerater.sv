@@ -133,7 +133,7 @@ module SNN_Accelerater
   initial begin
     wait(rst_n === 1'b1);
     forever begin
-      @(posedge clk);
+      @(negedge clk);
       assert (out_fifo_ready || (ctrl_step !== UPDATE_II)) else begin
         $fatal(1, "[SNN_Accelerater] @%0t: ERROR: out_fifo not ready", $time);
       end
@@ -194,6 +194,7 @@ module SNN_Accelerater
   synapse_data_t update_synapse_data_o, learn_synapse_data_o;
   LIF_Neuron LIF_Neuron_inst (
       .clk(clk),
+      .rst_n(rst_n),
       .cpt_rst(cpt_rst),
       .ctrl_step(ctrl_step),
       .enable_learn(enable_learn_reg),

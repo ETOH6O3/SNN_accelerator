@@ -3,8 +3,15 @@
 module tb_SNN_Accelerater;
   import data_types_pkg::*;
   import consts_pkg::*;
+  import logger_pkg::*;
 
-  localparam int EventCount = 3000;
+  // Logger 实例
+  logger lg;
+  initial begin
+    lg = new(.logger_file_name("sim_snn_acc.log"));
+  end
+
+  localparam int EventCount = 10000;
   localparam int DrainTimeNs = 20_000_000;
   localparam logic [15:0] NeuronThreshold = 16'd0;
 
@@ -14,8 +21,8 @@ module tb_SNN_Accelerater;
   aer_if aer_r ();
   aer_if aer_t ();
 
-  always #20 clk = !clk;
-  always #100 clk_async = !clk_async;
+  always #12.5 clk = !clk;
+  always #50 clk_async = !clk_async;
 
   logic timestep0;
   Time_Gen Time_Gen_inst (
@@ -70,6 +77,13 @@ module tb_SNN_Accelerater;
   int checked_output_count = 0;
   neuron_data_t golden_neuron[256];
   synapse_data_t golden_synapse[65536];
+
+  function automatic integer round_real(input real x);
+    if (x >= 0.0)
+      return $rtoi(x + 0.5);
+    else
+      return $rtoi(x - 0.5);
+  endfunction
 
   function automatic neuron_data_t expected_update_i(input neuron_data_t current,
                                                      input logic current_cpt_rst);
@@ -151,8 +165,7 @@ module tb_SNN_Accelerater;
           weight_sum = current.weight + current.learn_var.x_pre - 4'd8;
           expected.weight = weight_sum > 9'sd127 ? 8'sd127 :
               weight_sum < -9'sd128 ? -8'sd128 : weight_sum[7:0];
-          expected.learn_var.x_pre = current.learn_var.x_pre - (current.learn_var.x_pre >> 3) -
-              (current.learn_var.x_pre[2:0] >= 3'd4);
+          expected.learn_var.x_pre = round_real(real'(current.learn_var.x_pre) * real'(7 / 8));
         end
         LEARN_MODE_SDSP: begin
           case (current.learn_var.synapse_change_dir)
@@ -172,22 +185,26 @@ module tb_SNN_Accelerater;
 
   task automatic report_error(input string message);
     error_count++;
-    $error("[SNN_Accelerater] %s", message);
+    lg.error($sformatf("[SNN_Accelerater] %s", message));
   endtask
 
   task automatic send_events(input int count);
     for (int index = 0; index < count; index++) begin
+      lg.trace($sformatf("[tb_top] Sending event %0d", index));
       @(negedge clk_async);
       s_axis_tdata  = {1'b1, timestep0, byte'($urandom_range(0, 7))};
       s_axis_tvalid = 1'b1;
-      do @(negedge clk_async); while (!s_axis_tready);
+      wait(s_axis_tready);
       s_axis_tvalid = 1'b0;
     end
   endtask
 
   task automatic wait_and_drain;
-    #(DrainTimeNs);
-    repeat (100) @(posedge clk);
+  set_ansi_style(PendingStyle);
+  lg.display("Waiting for FIFO to drain...");
+  reset_style();
+  #(DrainTimeNs);
+  lg.info($sformatf("Steped for %0d ns to drain the FIFO", DrainTimeNs));
   endtask
 
   initial begin
@@ -199,8 +216,7 @@ module tb_SNN_Accelerater;
   end
 
   always #1 begin
-    aer_r.ack = aer_r.req;
-    aer_t.ack = aer_t.req;
+    #1 aer_t.ack <= aer_t.req;
   end
 
   initial begin
@@ -216,23 +232,35 @@ module tb_SNN_Accelerater;
     end
     checked_read_count = 0;
 
-    $display("===== SNN_Accelerater self-checking test =====");
+    lg.display("===== SNN_Accelerater self-checking test =====");
+    lg.info($sformatf("Sending %0d events without learning", EventCount));
     send_events(EventCount);
-    wait_and_drain();
     enable_learn = 1'b1;
     learn_mode   = LEARN_MODE_STDP;
     @(posedge timestep0);
+    lg.info($sformatf("Sending %0d events with STDP learning", EventCount));
     send_events(EventCount);
     wait_and_drain();
     learn_mode = LEARN_MODE_SDSP;
     @(negedge timestep0);
+    lg.info($sformatf("Sending %0d events with SDSP learning", EventCount));
     send_events(EventCount);
     wait_and_drain();
-    $display("Checked reads=%0d writes=%0d outputs=%0d", checked_read_count, checked_write_count,
-             checked_output_count);
-    if (error_count == 0) $display("===== Simulation completed: ALL CHECKS PASSED =====");
-    else $display("===== Simulation completed: %0d CHECK(S) FAILED =====", error_count);
-    $finish(error_count);
+    lg.info($sformatf("Checked reads=%0d writes=%0d outputs=%0d", checked_read_count,
+                      checked_write_count, checked_output_count));
+    if (error_count == 0) begin
+      set_ansi_style(SuccessStyle);
+      lg.display("Simulation completed: ALL CHECKS PASSED");
+    end else begin
+      set_ansi_style(ErrorStyle);
+      lg.display($sformatf("Simulation completed: SOME CHECKS FAILED"));
+    end
+    set_ansi_style('{UNDERLINE});
+    lg.write($sformatf("Total errors: %0d", error_count));
+    reset_style();
+
+    $display("");
+    $finish(0);
   end
 
   logic step_q, enable_q, cpt_rst_q;

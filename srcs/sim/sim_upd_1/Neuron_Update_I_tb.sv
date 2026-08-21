@@ -14,6 +14,14 @@
 
 module Neuron_Update_I_tb;
 
+  import logger_pkg::*;
+
+  // Logger 实例
+  logger lg;
+  initial begin
+    lg = new(.logger_file_name("sim_upd_1.log"));
+  end
+
   // ---------- 信号声明 ----------
   logic                         clk;
   logic                         rst_n;
@@ -56,11 +64,11 @@ module Neuron_Update_I_tb;
             (actual.t_ref !== expected.t_ref) ||
             (actual.calcium !== expected.calcium)) begin
       error_count++;
-      $error("\t\t\tFAIL\n  expected: %s\n  actual  : %s",
+      lg.error($sformatf("FAIL\n  expected: %s\n  actual  : %s",
              data_types_pkg::neuron_data_to_string(expected),
-             data_types_pkg::neuron_data_to_string(actual));
+             data_types_pkg::neuron_data_to_string(actual)));
     end else begin
-      $display("\t\t\tPASS: %s", data_types_pkg::neuron_data_to_string(actual));
+      lg.info($sformatf("PASS: %s", data_types_pkg::neuron_data_to_string(actual)));
     end
   endtask
 
@@ -68,7 +76,7 @@ module Neuron_Update_I_tb;
     data_types_pkg::neuron_data_t expected;
     begin
       #1;
-      $display("[%0t] %s: nd_i=%s", $time, phase, data_types_pkg::neuron_data_to_string(nd_i));
+      lg.info($sformatf("%s: nd_i=%s", phase, data_types_pkg::neuron_data_to_string(nd_i)));
       if (manual_exp) begin
         expected = _expected;
       end else begin
@@ -108,7 +116,7 @@ module Neuron_Update_I_tb;
     // ------------------------------------------------------------
     // 测试 1：膜电位和钙衰减（无不应期，无复位）
     // ------------------------------------------------------------
-    $display("\n===== Test 1: Leakage and Calcium decay =====");
+    lg.display("===== Test 1: Leakage and Calcium decay =====");
     repeat (30) begin
       step_and_check("Test 1");
     end
@@ -116,7 +124,7 @@ module Neuron_Update_I_tb;
     // ------------------------------------------------------------
     // 测试 2：竞争重置（cpt_rst = 1）
     // ------------------------------------------------------------
-    $display("\n===== Test 2: Competitive reset (cpt_rst=1) =====");
+    lg.display("===== Test 2: Competitive reset (cpt_rst=1) =====");
     cpt_rst = 1;
     nd_i.t_ref = 5;
     step_and_check("Test 2");
@@ -126,7 +134,7 @@ module Neuron_Update_I_tb;
     // ------------------------------------------------------------
     // 测试 3：不应期功能（t_ref > 0）
     // ------------------------------------------------------------
-    $display("\n===== Test 3: Refractory period decrement =====");
+    lg.display("===== Test 3: Refractory period decrement =====");
     // 重新加载初始值，但设置 t_ref = 2
     nd_i.v_mem   = 16'h3000;  // 新值
     nd_i.calcium = 4'hA;
@@ -138,7 +146,7 @@ module Neuron_Update_I_tb;
     // ------------------------------------------------------------
     // 测试 4：衰减到接近 0 后循环第一步（测试四舍五入稳定）
     // ------------------------------------------------------------
-    $display("\n===== Test 4: Stabilization near zero =====");
+    lg.display("===== Test 4: Stabilization near zero =====");
     nd_i.v_mem   = 16'h0012;  // 最小值（非零）
     nd_i.calcium = 4'd1;
     nd_i.t_ref   = 4'd0;
@@ -148,14 +156,14 @@ module Neuron_Update_I_tb;
     // ------------------------------------------------------------
     // 测试 5：论文一致性
     // ------------------------------------------------------------
-    $display("\n===== Test 5: Consistency with paper =====");
+    lg.display("===== Test 5: Consistency with paper =====");
     nd_i.v_mem   = 16'd744;
     nd_i.calcium = 4'd7; // NOTE: 论文中错标成了“输入膜电位为 7”
     nd_i.t_ref   = 4'd0;
     step_and_check("Test 5", 1'b1, '{v_mem: 16'd721, calcium: 4'd6, t_ref: 4'd0});
 
     // TEST 6 边界舍入
-    $display("\n===== Test 6: Boundary rounding =====");
+    lg.display("===== Test 6: Boundary rounding =====");
     nd_i.calcium = 4'd0;
     nd_i.t_ref   = 4'd0;
     nd_i.v_mem   = 32 + 15;
@@ -205,12 +213,18 @@ module Neuron_Update_I_tb;
 
 
     if (error_count == 0) begin
-      $display("\n===== Simulation completed: ALL CHECKS PASSED =====");
+      set_ansi_style(SuccessStyle);
+      lg.display("Simulation completed: ALL CHECKS PASSED");
     end else begin
-      $display("\n===== Simulation completed: %0d CHECK(S) FAILED =====", error_count);
+      set_ansi_style(ErrorStyle);
+      lg.display($sformatf("Simulation completed: SOME CHECKS FAILED"));
     end
+    set_ansi_style('{UNDERLINE});
+    lg.write($sformatf("Total errors: %0d", error_count));
+    reset_style();
 
-    $finish(error_count);
+    $display("");
+    $finish(0);
   end
 
 

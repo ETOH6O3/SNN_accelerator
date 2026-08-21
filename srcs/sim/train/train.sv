@@ -23,6 +23,13 @@
 
 module train;
   import data_types_pkg::*;
+  import logger_pkg::*;
+
+  // Logger 实例
+  logger lg;
+  initial begin
+    lg = new(logger::INFO);
+  end
 
   logic rst_n;
   initial begin
@@ -74,7 +81,7 @@ module train;
 
     wait (rst_n);
     #10;
-    $display("[tb_top] @%0t: Starting to send images", $time);
+    lg.info("[tb_top] Starting to send images");
     sender.send_imgs(1.3us);
   end
 

@@ -24,7 +24,7 @@ module Controller
     output logic       [15:0] synapse_addr_R,    //! 突触 RAM 读地址
     output logic       [15:0] synapse_addr_W     //! 突触 RAM 写地址
 );
-  // TODO: 根据论文对 src_number 、 tar_number 的使用的描述，推断为二者为移 1 码
+  // 根据论文对 src_number 、 tar_number 的使用的描述，推断为二者为移 1 码
   // TODO: 优化思路 interval 改为由内部动态生成，每个新时间步最初设置为 (𝑚 + 1)(𝑛 + 2) ，并在运行中监控目标神经元中的脉冲，每次脉冲给 interval 加上 (𝑚 + 2)
 
   // typedef enum logic [1:0] {
@@ -59,13 +59,21 @@ module Controller
       timestep_changed <= 1'b0;
     end else begin
       // 契约： interval 足够长，确保以下分支互斥
-      if (timestep0_d != timestep0) begin
+      unique if (timestep0_d != timestep0) begin
         timestep_changed <= 1'b1;
         // 若处于 IDLE , 下一刻进入 UPDATE_I 
       end else if (state == UPDATE_I) begin
         timestep_changed <= 1'b0;  // 复位
       end else begin
         timestep_changed <= timestep_changed;
+      end
+    end
+  end
+  initial begin
+    forever begin
+      @(negedge clk);
+      if ((timestep0_d != timestep0) && (state == UPDATE_I))  begin
+        $fatal(1, "[Controller] @%0t: interval maybe not long enough", $time);
       end
     end
   end
@@ -268,7 +276,5 @@ module Controller
   其它说明：
   1. 
   ****************************************************************************************************/
-
-  // TODO: 找学长要源码
 
 endmodule

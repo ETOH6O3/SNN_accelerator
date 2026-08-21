@@ -33,7 +33,7 @@ module Weight_Update
         else synapse_data_o.weight <= __add_temp_1[7:0];
         /***************************************************************************************************
             在∆𝑤计算完成之后，还会对𝑥𝑝𝑟𝑒进行衰减操作，基于𝑥𝑝𝑟𝑒的位宽，设置其时间常数为 8，与膜电位的衰减一样，
-            电路使用右移代替除法，同时小数部分大于 5 则会进位，小于等于 5 则会被舍去 // TODO: 为什么是 5 ？
+            电路使用右移代替除法，同时小数部分大于 5 则会进位，小于等于 5 则会被舍去
             ****************************************************************************************************/
         synapse_data_o.learn_var.x_pre <= synapse_data_i.learn_var.x_pre - (synapse_data_i.learn_var.x_pre >> 3) - (synapse_data_i.learn_var.x_pre[2:0] >= 4);
       end
@@ -56,6 +56,17 @@ module Weight_Update
         endcase
       end
     endcase
+  end
+
+  initial begin
+    forever begin
+      #1 unique case (synapse_data_i.learn_var.synapse_change_dir)
+      STEADY_ZERO, STEADY_ONE, CHANGE_INCR,CHANGE_DECR:;
+      default: begin
+        if(learn_mode == LEARN_MODE_SDSP) $fatal(1, "[Weight_Update] @%0t: ERROR: Invalid synapse_change_dir value: %0d", $time, synapse_data_i.learn_var.synapse_change_dir);
+      end
+      endcase
+    end
   end
 
 endmodule

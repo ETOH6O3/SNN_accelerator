@@ -1,0 +1,13 @@
+# compile verilog/system verilog design source files
+sv xil_defaultlib  --include "../../../../../../../../../Xilinx/2025.1/Vivado/data/rsb/busdef" --include "../../../../SNN_accelerator.ip_user_files/ipstatic/hdl" -d "VMARTIN_CONSOLE_SUPPORT_ANSI_STYLE=1" -d "VMARTIN_LOG_MODE_DEFAULT=INFO" -d "VMARTIN_LOG_DIR=C:/MARTIN/verilog/Xilinx/projects_vivado/SNN_accelerator/srcs/sim" \
+"../../../../srcs/modules/data_types_pkg.sv" \
+"../../../../srcs/modules/consts_pkg.sv" \
+"../../../../srcs/modules/Neuron_Update_I.sv" \
+"../../../../srcs/modules/logger_pkg.sv" \
+"../../../../srcs/sim/sim_upd_1/Neuron_Update_I_tb.sv" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort

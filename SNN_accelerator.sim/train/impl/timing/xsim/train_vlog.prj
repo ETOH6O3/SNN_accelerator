@@ -1,0 +1,26 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  --include "../../../../../../../../../../Xilinx/2025.1/Vivado/data/rsb/busdef" --include "../../../../../SNN_accelerator.ip_user_files/ipstatic/hdl" \
+"train_time_impl.v" \
+
+sv xil_defaultlib  --include "../../../../../../../../../../Xilinx/2025.1/Vivado/data/rsb/busdef" --include "../../../../../SNN_accelerator.ip_user_files/ipstatic/hdl" \
+"../../../../../srcs/modules/AERInput.sv" \
+"../../../../../srcs/modules/AEROutput.sv" \
+"../../../../../srcs/modules/data_types_pkg.sv" \
+"../../../../../srcs/modules/Controller.sv" \
+"../../../../../srcs/modules/LIF_Neuron.sv" \
+"../../../../../srcs/modules/consts_pkg.sv" \
+"../../../../../srcs/modules/Neuron_Update_I.sv" \
+"../../../../../srcs/modules/Neuron_Update_II.sv" \
+"../../../../../srcs/modules/SNN_Accelerater.sv" \
+"../../../../../srcs/modules/Time_Gen.sv" \
+"../../../../../srcs/modules/Weight_Update.sv" \
+"../../../../../srcs/modules/aer_inf.sv" \
+"../../../../../srcs/modules/aer_rx.sv" \
+"../../../../../srcs/modules/aer_tx.sv" \
+"../../../../../srcs/modules/cdc_sync.sv" \
+"../../../../../srcs/modules/pipeline_ctrl.sv" \
+"../../../../../srcs/modules/poisson_pkg.sv" \
+"../../../../../srcs/sim/train/train.sv" \
+
+# Do not sort compile order
+nosort

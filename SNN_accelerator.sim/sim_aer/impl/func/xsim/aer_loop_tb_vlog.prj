@@ -1,0 +1,9 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  --include "../../../../../../../../../../Xilinx/2025.1/Vivado/data/rsb/busdef" --include "../../../../../SNN_accelerator.ip_user_files/ipstatic/hdl" \
+"aer_loop_tb_func_impl.v" \
+
+sv xil_defaultlib  --include "../../../../../../../../../../Xilinx/2025.1/Vivado/data/rsb/busdef" --include "../../../../../SNN_accelerator.ip_user_files/ipstatic/hdl" \
+"../../../../../srcs/sim/sim_aer/aer_loop_tb.sv" \
+
+# Do not sort compile order
+nosort

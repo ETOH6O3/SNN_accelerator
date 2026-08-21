@@ -1,0 +1,6 @@
+0.7
+2020.2
+May 22 2025
+00:13:55
+C:/MARTIN/verilog/Xilinx/projects_vivado/SNN_accelerator/SNN_accelerator.sim/sim_aer/impl/timing/xsim/aer_loop_tb_time_impl.v,1786958698,verilog,,,,AERTestFifo;AERTestFifo_axis_data_fifo_v2_0_17_top;AERTestFifo_xpm_cdc_gray;AERTestFifo_xpm_cdc_gray__1;AERTestFifo_xpm_cdc_sync_rst;AERTestFifo_xpm_cdc_sync_rst__1;AERTestFifo_xpm_cdc_sync_rst__2;AERTestFifo_xpm_counter_updn__parameterized0;AERTestFifo_xpm_counter_updn__parameterized0_1;AERTestFifo_xpm_counter_updn__parameterized1;AERTestFifo_xpm_counter_updn__parameterized1_2;AERTestFifo_xpm_counter_updn__parameterized2;AERTestFifo_xpm_fifo_axis;AERTestFifo_xpm_fifo_base;AERTestFifo_xpm_fifo_reg_bit;AERTestFifo_xpm_fifo_reg_vec;AERTestFifo_xpm_fifo_reg_vec_0;AERTestFifo_xpm_fifo_rst;AERTestFifo_xpm_memory_base;aer_loop;aer_rx;aer_tx;cdc_sync;cdc_sync__xdcDup__1;glbl,,uvm,../../../../../../../../../../Xilinx/2025.1/Vivado/data/rsb/busdef;../../../../../SNN_accelerator.ip_user_files/ipstatic/hdl,,,,,
+C:/MARTIN/verilog/Xilinx/projects_vivado/SNN_accelerator/srcs/sim/sim_aer/aer_loop_tb.sv,1786942772,systemVerilog,,,,aer_loop_tb,,uvm,../../../../../../../../../../Xilinx/2025.1/Vivado/data/rsb/busdef;../../../../../SNN_accelerator.ip_user_files/ipstatic/hdl,,,,,

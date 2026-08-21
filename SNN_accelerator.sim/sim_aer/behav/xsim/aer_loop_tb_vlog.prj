@@ -1,0 +1,18 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  --include "../../../../../../../../../Xilinx/2025.1/Vivado/data/rsb/busdef" --include "../../../../SNN_accelerator.ip_user_files/ipstatic/hdl" -d "VMARTIN_CONSOLE_SUPPORT_ANSI_STYLE=1" -d "VMARTIN_LOG_MODE_DEFAULT=INFO" -d "VMARTIN_LOG_DIR=C:/MARTIN/verilog/Xilinx/projects_vivado/SNN_accelerator/srcs/sim" \
+"../../../../SNN_accelerator.gen/sources_1/ip/AERTestFifo/sim/AERTestFifo.v" \
+
+sv xil_defaultlib  --include "../../../../../../../../../Xilinx/2025.1/Vivado/data/rsb/busdef" --include "../../../../SNN_accelerator.ip_user_files/ipstatic/hdl" -d "VMARTIN_CONSOLE_SUPPORT_ANSI_STYLE=1" -d "VMARTIN_LOG_MODE_DEFAULT=INFO" -d "VMARTIN_LOG_DIR=C:/MARTIN/verilog/Xilinx/projects_vivado/SNN_accelerator/srcs/sim" \
+"../../../../srcs/modules/aer_inf.sv" \
+"../../../../srcs/modules/aer_loop.sv" \
+"../../../../srcs/modules/logger_pkg.sv" \
+"../../../../srcs/modules/aer_rx.sv" \
+"../../../../srcs/modules/aer_tx.sv" \
+"../../../../srcs/modules/cdc_sync.sv" \
+"../../../../srcs/sim/sim_aer/aer_loop_tb.sv" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort

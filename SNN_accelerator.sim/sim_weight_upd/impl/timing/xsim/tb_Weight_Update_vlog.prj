@@ -1,0 +1,13 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  --include "../../../../../../../../../../Xilinx/2025.1/Vivado/data/rsb/busdef" --include "../../../../../SNN_accelerator.ip_user_files/ipstatic/hdl" \
+"tb_Weight_Update_time_impl.v" \
+
+sv xil_defaultlib  --include "../../../../../../../../../../Xilinx/2025.1/Vivado/data/rsb/busdef" --include "../../../../../SNN_accelerator.ip_user_files/ipstatic/hdl" \
+"../../../../../srcs/modules/data_types_pkg.sv" \
+"../../../../../srcs/modules/consts_pkg.sv" \
+"../../../../../srcs/modules/Weight_Update.sv" \
+"../../../../../srcs/modules/logger_pkg.sv" \
+"../../../../../srcs/sim/sim_weight_upd/tb_Weight_Update.sv" \
+
+# Do not sort compile order
+nosort

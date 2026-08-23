@@ -2,7 +2,7 @@
 // Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-// Date        : Mon Aug 17 17:24:58 2026
+// Date        : Sun Aug 23 19:07:20 2026
 // Host        : HUASHUO_U9_smm running 64-bit major release  (build 9200)
 // Command     : write_verilog -mode timesim -nolib -sdf_anno true -force -file
 //               C:/MARTIN/verilog/Xilinx/projects_vivado/SNN_accelerator/SNN_accelerator.sim/sim_aer/impl/timing/xsim/aer_loop_tb_time_impl.v
@@ -4335,7 +4335,6 @@ end
         .I1(injection_en_IBUF),
         .I2(m_axis_tdata_1[4]),
         .O(m_axis_tdata_2[4]));
-  (* \PinAttr:I2:HOLD_DETOUR  = "131" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     your_instance_name_i_8

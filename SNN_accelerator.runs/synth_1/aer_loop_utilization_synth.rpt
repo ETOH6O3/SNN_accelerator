@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-| Date         : Mon Aug 17 16:38:28 2026
+| Date         : Sun Aug 23 17:35:10 2026
 | Host         : HUASHUO_U9_smm running 64-bit major release  (build 9200)
 | Command      : report_utilization -file aer_loop_utilization_synth.rpt -pb aer_loop_utilization_synth.pb
 | Design       : aer_loop

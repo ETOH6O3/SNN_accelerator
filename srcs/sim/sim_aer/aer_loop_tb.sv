@@ -75,6 +75,11 @@ module aer_loop_tb;
     hp1 = 8;
     hp2 = 12;
 
+    // 临时卡住不更改周期
+    forever begin
+      #1000us;
+    end
+
     forever begin
       // 随机设置悬殊的周期
 
@@ -134,8 +139,8 @@ module aer_loop_tb;
     begin
       automatic logic [9:0] inj_datas[$];
 
-      force hp2 = 6;
-      force hp1 = 600;
+      // force hp2 = 6;
+      // force hp1 = 600;
 
       injection_en = 1;
       // 待回环清空

@@ -199,6 +199,9 @@ open_project $proj
 
 
 set_property -name {xsim.simulate.runtime} -value {0ns} -objects [get_filesets $simsets]
+# Behavioral simulation does not use implementation SDF. Disable primitive timing
+# checks to avoid false setup/hold warnings from XPM FIFO RAMB18E1 models.
+set_property -name {xsim.elaborate.xelab.more_options} -value {-notimingchecks} -objects [get_filesets $simsets]
 
 
 # 保存每个仿真集当前的 verilog_define 到数组

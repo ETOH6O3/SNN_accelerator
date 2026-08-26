@@ -52,7 +52,7 @@ module train;
   ) sender;
   initial begin
     // 恢复到上次训练终止处
-    poisson::resume_breakpoint(266);
+    // poisson::resume_breakpoint(70);
     poisson::report_queue();
 
     sender = new(aer_r);
@@ -82,19 +82,19 @@ module train;
     wait (rst_n);
     #10;
     lg.info("[tb_top] Starting to send images");
-    sender.send_imgs(1.3us);
+    sender.send_imgs(5us);
   end
 
   SNN_Accelerater #(
-    .NeuronConst('{v_thr: 16'd35000, t_ref: 4'd0}),
+    .NeuronConst('{v_thr: 16'd4000, t_ref: 4'd1}),
     .LearnConst('{
-        xtar: 4'd9,
-        theta_m: 16'd256,
-        ca_theta_1: 4'd3,
-        ca_theta_2: 4'd8,
-        ca_theta_3: 4'd13
+        xtar: 4'd11,
+        theta_m: 16'd2000,
+        ca_theta_1: 4'd2,
+        ca_theta_2: 4'd9,
+        ca_theta_3: 4'd15
     }),
-    .SrcSpikePerStepMaxExp(150),
+    .SrcSpikePerStepMaxExp(128),
     .SpikePerStepMaxExp(8)
     ) SNN_Accelerater_inst  (
       .clk(clk),
@@ -102,7 +102,7 @@ module train;
       .aer_r(aer_r),
       .aer_t(aer_t),
       .enable_learn(1'b1),
-      .learn_mode(LEARN_MODE_STDP)
+      .learn_mode(LEARN_MODE_SDSP)
   );
 
   always #1 aer_t.ack = aer_t.req;

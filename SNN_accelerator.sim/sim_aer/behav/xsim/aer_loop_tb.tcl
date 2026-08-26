@@ -9,3 +9,6 @@ if { [string length $curr_wave] == 0 } {
 }
 
 run 0ns
+
+source -notrace {../../../../srcs/sim/train/socket.tcl}
+

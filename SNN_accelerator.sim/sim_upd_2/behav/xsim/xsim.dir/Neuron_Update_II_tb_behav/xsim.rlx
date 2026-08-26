@@ -1,11 +1,11 @@
 
 { 
-    crc :  14238602952824941480  , 
+    crc :  9314392000545232722  , 
     ccp_crc :  0  , 
-    cmdline : " --incr --debug typical --relax --mt 2 -L xil_defaultlib -L uvm -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot Neuron_Update_II_tb_behav xil_defaultlib.Neuron_Update_II_tb xil_defaultlib.glbl" , 
+    cmdline : " --incr --debug typical --relax --mt 2 --include C:/Xilinx/2025.1/Vivado/tps/boost_1_72_0 -L xil_defaultlib -L uvm -L unisims_ver -L unimacro_ver -L secureip -L xpm -sv_root . -sc_lib libdpi.dll --snapshot Neuron_Update_II_tb_behav xil_defaultlib.Neuron_Update_II_tb xil_defaultlib.glbl" , 
     buildDate : "May 22 2025" , 
     buildTime : "00:13:55" , 
-    linkCmd : "C:\\Xilinx\\2025.1\\Vivado\\data\\..\\tps\\mingw\\6.2.0\\win64.o\\nt\\bin\\gcc.exe -Wa,-W  -O -Wl,--stack,104857600 -o \"xsim.dir/Neuron_Update_II_tb_behav/xsimk.exe\"   \"xsim.dir/Neuron_Update_II_tb_behav/obj/xsim_0.win64.obj\" \"xsim.dir/Neuron_Update_II_tb_behav/obj/xsim_1.win64.obj\" -L\"C:\\Xilinx\\2025.1\\Vivado\\lib\\win64.o\" -lxv_simulator_kernel   -lxv_simbridge_kernel" , 
+    linkCmd : "C:\\Xilinx\\2025.1\\Vivado\\data\\..\\tps\\mingw\\6.2.0\\win64.o\\nt\\bin\\gcc.exe -Wa,-W  -O -Wl,--stack,104857600 -o \"xsim.dir/Neuron_Update_II_tb_behav/xsimk.exe\"   \"xsim.dir/Neuron_Update_II_tb_behav/obj/xsim_0.win64.obj\" \"xsim.dir/Neuron_Update_II_tb_behav/obj/xsim_1.win64.obj\" \"xsim.dir/Neuron_Update_II_tb_behav/obj/xsim_2.win64.obj\" -L\"C:\\Xilinx\\2025.1\\Vivado\\lib\\win64.o\" -lxv_simulator_kernel  \"./libdpi.dll\"  -lxv_simbridge_kernel" , 
     aggregate_nets : 
     [ 
     ] 

@@ -1,5 +1,5 @@
 # compile verilog/system verilog design source files
-sv xil_defaultlib  --include "../../../../../../../../../Xilinx/2025.1/Vivado/data/rsb/busdef" --include "../../../../SNN_accelerator.ip_user_files/ipstatic/hdl" -d "VMARTIN_CONSOLE_SUPPORT_ANSI_STYLE=1" -d "VMARTIN_LOG_MODE_DEFAULT=INFO" -d "VMARTIN_LOG_DIR=C:/MARTIN/verilog/Xilinx/projects_vivado/SNN_accelerator/srcs/sim" \
+sv xil_defaultlib  --include "../../../../../../../../../Xilinx/2025.1/Vivado/data/rsb/busdef" --include "../../../../SNN_accelerator.ip_user_files/ipstatic/hdl" \
 "../../../../srcs/modules/data_types_pkg.sv" \
 "../../../../srcs/modules/consts_pkg.sv" \
 "../../../../srcs/modules/Weight_Update.sv" \

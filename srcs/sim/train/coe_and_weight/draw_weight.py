@@ -1,6 +1,6 @@
 
 import os
-import matplotlib.pyplot as plt
+import argparse
 import numpy as np
 from PIL import Image
 
@@ -50,16 +50,29 @@ def extract_weight(line: str) -> float:
         data = data - 256  # Convert to negative value
     return data / 128.0  # Normalize to [-1, 1)
 
-with open(os.path.dirname(__file__) + "/ram_data.txt", "r") as f:
-    lines = f.readlines()
-    weights = [extract_weight(line) for line in lines]
+def main():
 
-    plt.hist(weights, bins=50, edgecolor='black')
-    plt.xlabel("Weight Value")
-    plt.ylabel("Frequency")
-    plt.title("Distribution of Weights")
-    plt.show()
+    # 添加控制台参数：是否绘制权重分布图
+    parser = argparse.ArgumentParser(description="Draw weight distribution and create grayscale image.")
+    parser.add_argument('-nh','--no_hist',action='store_true', help="Don't draw histogram of weights")
 
-    create_grayscale_image(weights, save_path=os.path.dirname(__file__) + "/weights_image.png")
+    args = parser.parse_args()
 
-    pass
+    with open(os.path.dirname(__file__) + "/ram_data.txt", "r") as f:
+        lines = f.readlines()
+        weights = [extract_weight(line) for line in lines]
+
+        if not args.no_hist:
+            import matplotlib.pyplot as plt
+            plt.hist(weights, bins=50, edgecolor='black')
+            plt.xlabel("Weight Value")
+            plt.ylabel("Frequency")
+            plt.title("Distribution of Weights")
+            plt.show()
+
+        create_grayscale_image(weights, save_path=os.path.dirname(__file__) + "/weights_image.png")
+
+        pass
+
+if __name__ == "__main__": 
+    main()

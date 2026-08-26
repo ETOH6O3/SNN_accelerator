@@ -71,7 +71,13 @@ module tb_Weight_Update;
         dir = in_data.learn_var.synapse_change_dir;
         unique case (dir)
           STEADY_ZERO, STEADY_ONE: begin
-            exp.weight = in_data.weight;
+            if (in_data.weight > 0) begin
+              exp.weight = in_data.weight + 1;
+            end else if (in_data.weight < 0) begin
+              exp.weight = in_data.weight - 1;
+            end else begin
+              exp.weight = in_data.weight;
+            end
           end
           CHANGE_INCR: begin
             exp.weight = (in_data.weight == 8'sd127) ? in_data.weight : (in_data.weight + 1);

@@ -41,11 +41,20 @@ module Weight_Update
         /***************************************************************************************************
         当启用 SDSP 学习时，学习变量表示权重更新的方向，模块会根据参数的不同使权
         重增加或减小。如果输入权重为权重的最大值或最小值，则不会产生变化。
+
+        当学习变量的低 2 位为 2’b01 时，权重值加 1，当学习变量的低 2 位为 2’b10 时，权重值减 1。
+        如果上述两种条件均不满足，则会触发双稳态机制，使大于零的权重值加 1，小于零的权重值减 1。
         ****************************************************************************************************/
         synapse_data_o.learn_var <= synapse_data_i.learn_var;
         unique case (synapse_data_i.learn_var.synapse_change_dir)
           STEADY_ZERO, STEADY_ONE: begin
-            synapse_data_o.weight <= synapse_data_i.weight;
+            unique if (synapse_data_i.weight > 0) begin
+              synapse_data_o.weight <= synapse_data_i.weight + 1;
+            end else if (synapse_data_i.weight < 0) begin
+              synapse_data_o.weight <= synapse_data_i.weight - 1;
+            end else begin
+              synapse_data_o.weight <= synapse_data_i.weight;
+            end
           end
           CHANGE_INCR: begin
             synapse_data_o.weight <= (synapse_data_i.weight == 8'sd127) ? synapse_data_i.weight : (synapse_data_i.weight + 1);

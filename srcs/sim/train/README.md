@@ -28,6 +28,9 @@ srcs\sim\train\auto_run_and_ctrl.ps1 [-coe_file <绝对路径>]
 - 自动开启仿真，关闭波形记录
 - 通过 [ctrl.ps1](./ctrl.ps1) 在一个新开的终端窗口中提供控制命令，驱动 [auto.tcl](./auto.tcl) 运行仿真
 
+> 使用当前配置运行至约 126s 处可获得 `coe_and_weight/STDP/【FINAL】**` 的结果
+> ![](./coe_and_weight/STDP/【FINAL】weights_image_451_vthr1w_tref15_xtar11_hp5us.png)
+
 ### 仿真控制命令
 
 在 `auto_run_and_ctrl.ps1` 新开的终端窗口中，可输入以下命令随时控制仿真。_指令会在仿真程序的下一个检查点生效_。

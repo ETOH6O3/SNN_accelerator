@@ -7,6 +7,8 @@ def transform_neg(int8_num: int):
     else:
         return int8_num
 
+random.seed(42)
+
 with open(os.path.dirname(__file__) + "/synapse_mem.coe", "w") as f:
     print("memory_initialization_radix = 16;", file=f)
     print("memory_initialization_vector =", file=f)

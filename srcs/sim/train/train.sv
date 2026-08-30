@@ -86,7 +86,7 @@ module train;
   end
 
   SNN_Accelerater #(
-    .NeuronConst('{v_thr: 16'd4000, t_ref: 4'd1}),
+    .NeuronConst('{v_thr: 16'd10000, t_ref: 4'd15}),
     .LearnConst('{
         xtar: 4'd11,
         theta_m: 16'd2000,
@@ -102,7 +102,7 @@ module train;
       .aer_r(aer_r),
       .aer_t(aer_t),
       .enable_learn(1'b1),
-      .learn_mode(LEARN_MODE_SDSP)
+      .learn_mode(LEARN_MODE_STDP)
   );
 
   always #1 aer_t.ack = aer_t.req;

@@ -1,0 +1,13 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  --include "../../../../../../../../../../Xilinx/2025.1/Vivado/data/rsb/busdef" --include "../../../../../SNN_accelerator.ip_user_files/ipstatic/hdl" \
+"train_func_impl.v" \
+
+sv xil_defaultlib  --include "../../../../../../../../../../Xilinx/2025.1/Vivado/data/rsb/busdef" --include "../../../../../SNN_accelerator.ip_user_files/ipstatic/hdl" \
+"../../../../../srcs/modules/data_types_pkg.sv" \
+"../../../../../srcs/modules/aer_inf.sv" \
+"../../../../../srcs/modules/logger_pkg.sv" \
+"../../../../../srcs/modules/poisson_pkg.sv" \
+"../../../../../srcs/sim/train/train.sv" \
+
+# Do not sort compile order
+nosort

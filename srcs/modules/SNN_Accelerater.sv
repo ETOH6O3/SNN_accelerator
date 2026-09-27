@@ -218,9 +218,11 @@ module SNN_Accelerater
     if (!rst_n) begin
       enable_learn_reg <= enable_learn;
       learn_mode_reg   <= learn_mode;
-    end else if (timestep0_d != timestep0) begin
-      enable_learn_reg <= enable_learn;
-      learn_mode_reg   <= learn_mode;
+    end else begin
+      if (timestep0_d != timestep0) begin
+        enable_learn_reg <= enable_learn;
+        learn_mode_reg   <= learn_mode;
+      end
     end
   end
   assign weight_update_en = (ctrl_step == LEARN);

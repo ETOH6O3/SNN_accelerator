@@ -2,10 +2,10 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
--- Date        : Sun Aug  2 12:44:09 2026
+-- Date        : Wed Sep  2 13:37:17 2026
 -- Host        : HUASHUO_U9_smm running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode funcsim -rename_top AERFifo -prefix
---               AERFifo_ AERFifo_sim_netlist.vhdl
+-- Command     : write_vhdl -force -mode funcsim
+--               c:/MARTIN/verilog/Xilinx/projects_vivado/SNN_accelerator/SNN_accelerator.gen/sources_1/ip/AERFifo/AERFifo_sim_netlist.vhdl
 -- Design      : AERFifo
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -29,6 +29,8 @@ entity AERFifo_xpm_cdc_sync_rst is
   attribute INIT of AERFifo_xpm_cdc_sync_rst : entity is "0";
   attribute INIT_SYNC_FF : integer;
   attribute INIT_SYNC_FF of AERFifo_xpm_cdc_sync_rst : entity is 1;
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of AERFifo_xpm_cdc_sync_rst : entity is "xpm_cdc_sync_rst";
   attribute SIM_ASSERT_CHK : integer;
   attribute SIM_ASSERT_CHK of AERFifo_xpm_cdc_sync_rst : entity is 0;
   attribute VERSION : integer;
@@ -1274,6 +1276,8 @@ entity AERFifo_xpm_fifo_reg_bit is
     wr_clk : in STD_LOGIC;
     rst : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of AERFifo_xpm_fifo_reg_bit : entity is "xpm_fifo_reg_bit";
 end AERFifo_xpm_fifo_reg_bit;
 
 architecture STRUCTURE of AERFifo_xpm_fifo_reg_bit is
@@ -1316,6 +1320,8 @@ entity AERFifo_xpm_fifo_rst is
     rst_d1 : in STD_LOGIC;
     wr_clk : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of AERFifo_xpm_fifo_rst : entity is "xpm_fifo_rst";
 end AERFifo_xpm_fifo_rst;
 
 architecture STRUCTURE of AERFifo_xpm_fifo_rst is
@@ -1474,6 +1480,8 @@ entity AERFifo_xpm_memory_base is
   attribute MESSAGE_CONTROL of AERFifo_xpm_memory_base : entity is 0;
   attribute NUM_CHAR_LOC : integer;
   attribute NUM_CHAR_LOC of AERFifo_xpm_memory_base : entity is 0;
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of AERFifo_xpm_memory_base : entity is "xpm_memory_base";
   attribute P_ECC_MODE : integer;
   attribute P_ECC_MODE of AERFifo_xpm_memory_base : entity is 0;
   attribute P_ENABLE_BYTE_WRITE_A : integer;
@@ -1879,6 +1887,8 @@ entity AERFifo_xpm_fifo_base is
   attribute FULL_RESET_VALUE of AERFifo_xpm_fifo_base : entity is 1;
   attribute FULL_RST_VAL : string;
   attribute FULL_RST_VAL of AERFifo_xpm_fifo_base : entity is "1'b1";
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of AERFifo_xpm_fifo_base : entity is "xpm_fifo_base";
   attribute PE_THRESH_ADJ : integer;
   attribute PE_THRESH_ADJ of AERFifo_xpm_fifo_base : entity is 3;
   attribute PE_THRESH_MAX : integer;
@@ -2510,6 +2520,8 @@ entity AERFifo_xpm_fifo_axis is
   attribute FIFO_MEMORY_TYPE of AERFifo_xpm_fifo_axis : entity is "auto";
   attribute LOG_DEPTH_AXIS : integer;
   attribute LOG_DEPTH_AXIS of AERFifo_xpm_fifo_axis : entity is 8;
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of AERFifo_xpm_fifo_axis : entity is "xpm_fifo_axis";
   attribute PACKET_FIFO : string;
   attribute PACKET_FIFO of AERFifo_xpm_fifo_axis : entity is "false";
   attribute PKT_SIZE_LT8 : string;
@@ -2958,6 +2970,8 @@ entity AERFifo_axis_data_fifo_v2_0_17_top is
   attribute LP_USE_ADV_FEATURES of AERFifo_axis_data_fifo_v2_0_17_top : entity is 825241648;
   attribute LP_WR_DATA_COUNT_WIDTH : integer;
   attribute LP_WR_DATA_COUNT_WIDTH of AERFifo_axis_data_fifo_v2_0_17_top : entity is 9;
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of AERFifo_axis_data_fifo_v2_0_17_top : entity is "axis_data_fifo_v2_0_17_top";
 end AERFifo_axis_data_fifo_v2_0_17_top;
 
 architecture STRUCTURE of AERFifo_axis_data_fifo_v2_0_17_top is
